@@ -1,0 +1,9 @@
+.profile__button_edit {
+  width: 24px;
+  height: 24px;
+  background-image: url("../../../../images/edite-button.svg");
+  background-position: 50% 50%;
+  background-size: calc(100% - 2*7px);
+  padding: 6px 6px;
+  order: 2;
+}
