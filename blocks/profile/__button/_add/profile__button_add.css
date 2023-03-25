@@ -3,29 +3,28 @@
   min-height: 50px;
   background-image: url("../../../../images/add-button.svg");
   background-position: 50% 50%;
-  padding: 13px 63px;
+  background-size: 22px;
 }
 
 @media (max-width: 1200px) {
   .profile__button_add {
     max-width: 120px;
-    padding: 13px 48px;
   }  
 }
 
 @media (max-width: 1023px) {
   .profile__button_add {
     max-width: 90px;
-    min-height: 35px;
-    padding: 7px 36px;
+    min-height: 30px;
+    background-size: 16px;
   }  
 }
 
 
-@media (max-width: 767px) {
+@media (max-width: 800px) {
   .profile__button_add {
     max-width: 282px;
-    padding: 16px 132px;
+    min-height: 50px;
     margin: 0;
   }  
 }
