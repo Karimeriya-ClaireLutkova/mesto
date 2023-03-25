@@ -7,3 +7,12 @@
   padding: 6px 6px;
   order: 2;
 }
+
+@media (max-width: 767px) {
+  .profile__button_edit {
+    width: 18px;
+    height: 18px;
+    background-size: calc(100% - 2*4.25px);
+    padding: 4.25px 4.25px;
+  }
+}

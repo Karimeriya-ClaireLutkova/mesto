@@ -5,4 +5,19 @@
   max-width: 336px;
   gap: 16px 18px;
   align-items: flex-end;
+  margin-right: auto;
+}
+
+@media (max-width: 920px) {
+  .profile__info {
+    max-width: 260px;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile__info {
+    max-width: 282px;
+    gap: 10px 14px;
+    margin: 0 0 36px;
+  }
 }

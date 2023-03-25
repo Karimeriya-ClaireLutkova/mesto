@@ -4,8 +4,23 @@
   background-image: url("../../../../images/add-button.svg");
   background-position: 50% 50%;
   padding: 13px 63px;
-  margin-left: auto;
 }
+
+@media (max-width: 1200px) {
+  .profile__button_add {
+    max-width: 120px;
+    padding: 13px 48px;
+  }  
+}
+
+@media (max-width: 1023px) {
+  .profile__button_add {
+    max-width: 90px;
+    min-height: 35px;
+    padding: 7px 36px;
+  }  
+}
+
 
 @media (max-width: 767px) {
   .profile__button_add {

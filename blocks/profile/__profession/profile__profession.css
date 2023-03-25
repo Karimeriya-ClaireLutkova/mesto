@@ -1,5 +1,4 @@
 .profile__profession {
-  max-width: 100%;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.22;
@@ -7,4 +6,18 @@
   padding: 0;
   order: 3;
   grid-column: 1/-1;
+}
+
+@media (max-width: 920px) {
+  .profile__profession {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.21;
+  }
+}
+
+@media (max-width: 767px) {
+  .profile__profession {
+    text-align: center;
+  }
 }
