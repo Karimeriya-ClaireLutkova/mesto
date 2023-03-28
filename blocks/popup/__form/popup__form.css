@@ -1,0 +1,11 @@
+.popup__form {
+  max-width: 430px;
+  min-height: 330px;
+  background-color: #FFF;
+  border-radius: 10px;
+  padding: 34px 36px 37px;
+  box-sizing: border-box;
+  position: relative;
+  color: #000;
+  order: 2;
+}

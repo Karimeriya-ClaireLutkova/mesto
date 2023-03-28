@@ -1,0 +1,10 @@
+.popup__button_close {
+  max-width: 32px;
+  max-height: 32px;
+  background-image: url("../../../../images/close-icon.svg");
+  background-position: 50% 50%;
+  background-size: auto;
+  margin: 155px 385px 8px 863px;
+  z-index: 1;
+  order: 1;
+}
