@@ -15,12 +15,11 @@
     width: 20px;
     height: 20px;
     transform: translate(131px, 0px);
-  }  
+  }
 }
 
 @media (max-width: 767px) {
   .popup__button_close {
     margin: 87px 0 16px;
-  }  
+  }
 }
-

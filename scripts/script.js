@@ -10,8 +10,8 @@ function closingForm() {
   let formElement = document.querySelector('.popup__form');
   let nameInput = formElement.querySelector('.popup__input_type_name');
   let jobInput = formElement.querySelector('.popup__input_type_profession');
-  nameInput.value = 'Жак-Ив Кусто'
-  jobInput.value = 'Исследователь океана'
+  nameInput.value = 'Жак-Ив Кусто';
+  jobInput.value = 'Исследователь океана';
   let formEdit = document.querySelector('.popup');
   formEdit.style.visibility = 'hidden';
 }
@@ -27,11 +27,10 @@ function handleFormSubmit (evt) {
     let profileName = document.querySelector('.profile__name');
     let profileJob = document.querySelector('.profile__profession');
     profileName.textContent = nameInput.value;
-    profileJob.textContent = jobInput.value;    
+    profileJob.textContent = jobInput.value;
 }
 formElement.addEventListener('submit', handleFormSubmit);
 function closeSaveInfo() {
   document.querySelector('.popup').style.visibility = 'hidden';
 }
 formElement.addEventListener('submit', closeSaveInfo);
-
