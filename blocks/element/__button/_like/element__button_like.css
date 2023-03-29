@@ -7,10 +7,6 @@
   margin: 5px 5px 1px auto;
 }
 
-.element__button_like:active .element__button_like:active {
-  background-image: url("../../../../images/Like-active.svg");
-}
-
 .element__button_like:focus {
   background-image: url("../../../../images/Like-active.svg");
 }
