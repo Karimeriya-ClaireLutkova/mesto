@@ -9,3 +9,11 @@
   color: #000;
   order: 2;
 }
+
+@media (max-width: 800px) {
+  .popup__form {
+    width: 282px;
+    height: 322px;
+    padding: 25px 22px;
+  }  
+}

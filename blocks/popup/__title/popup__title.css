@@ -8,3 +8,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+@media (max-width: 800px) {
+  .popup__title {
+    width: 238px;
+    height: 22px;
+    font-size: 18px;
+    line-height: 1.22;
+    margin: 0 0 75px;
+  }  
+}
