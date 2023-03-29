@@ -1,7 +1,6 @@
 .popup__form-info {
   display: flex;
   flex-direction: column;
-  align-content: space-between;
   margin: 0;
   padding: 0;
   border: none;
