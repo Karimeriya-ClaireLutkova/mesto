@@ -20,5 +20,6 @@
     font-size: 18px;
     line-height: 1.22;
     margin: 0 0 75px;
+    transform: translate(0, -297px);
   }
 }
