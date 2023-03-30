@@ -12,5 +12,7 @@
   .footer__copyright {
     max-width: 282px;
     margin: 0 auto;
+    font-size: 14px;
+    line-height: 1.21;
   }
 }

@@ -19,6 +19,7 @@
 
 @media (max-width: 980px) {
   .profile__name {
-    text-align: end;
+    max-width: 189px;
+    justify-self: end;
   }
 }
