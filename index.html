@@ -14,8 +14,8 @@
     <section class="profile">
       <img class="profile__avatar" src="./images/kusto_avatar.jpg" alt="Фотография пользователя">
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <p class="profile__profession">Исследователь океана</p>
+        <h1 class="profile__name" value="Жак-Ив Кусто">Жак-Ив Кусто</h1>
+        <p class="profile__profession" value="Исследователь океана">Исследователь океана</p>
         <button type="button" class="profile__button profile__button_edit" aria-label="Редактировать профиль"></button>      
       </div>
       <button type="button" class="profile__button profile__button_add" aria-label="Добавить фотографию места"></button>
@@ -72,18 +72,17 @@
     <form class="popup__form" name="profile">
       <fieldset class="popup__form-info">
         <label class="popup__field">
-          <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" value="Жак-Ив Кусто">
+          <input type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" value="">
         </label>
         <label class="popup__field">
-          <input type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="Профессия" value="Исследователь океана">
+          <input type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="Профессия" value="">
         </label>
         <button type="submit" class="popup__button popup__button_save">Сохранить</button>
       </fieldset>
     </form>
-    <div class="popup-overlay"></div>
     <h2 class="popup__title">Редактировать профиль</h2>
     <button type="button" class="popup__button popup__button_close" aria-label="Закрыть форму редактирования"></button>
   </div>
-  <script src="./scripts/script.js"></script>
+  <script src="./scripts/index.js"></script>
 </body>
 </html>
