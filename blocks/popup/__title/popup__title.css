@@ -4,9 +4,13 @@
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2;
-  margin: 0 28px 54px 0;
+  margin: 0;
   padding: 0;
+  z-index: 1;
+  order: 3;
+  color: #000;
   box-sizing: border-box;
+  transform: translate(-28px, -296px);
 }
 
 @media (max-width: 800px) {
