@@ -11,13 +11,13 @@ let jobProfileValue = profileJob.getAttribute('value');
 
 
 function showForm() {  
-  formEdit.classList.add('popup_visible');
+  formEdit.classList.add('popup_opened');
   nameInput.setAttribute('value', nameProfileValue);
   jobInput.setAttribute('value', jobProfileValue);
 }
 
 function closingForm() {
-  formEdit.classList.remove('popup_visible');
+  formEdit.classList.remove('popup_opened');
   nameInput.value = nameProfileValue;
   jobInput.value = jobProfileValue;
 }
