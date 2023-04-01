@@ -6,20 +6,15 @@ let cancel = document.querySelector('.popup__button_close');
 let formElement = document.querySelector('.popup__form');
 let nameInput = formElement.querySelector('.popup__input_type_name');
 let jobInput = formElement.querySelector('.popup__input_type_profession');
-let nameProfileValue = profileName.getAttribute('value');
-let jobProfileValue = profileJob.getAttribute('value');
-
 
 function showForm() {  
   formEdit.classList.add('popup_opened');
-  nameInput.setAttribute('value', nameProfileValue);
-  jobInput.setAttribute('value', jobProfileValue);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 }
 
 function closingForm() {
   formEdit.classList.remove('popup_opened');
-  nameInput.value = nameProfileValue;
-  jobInput.value = jobProfileValue;
 }
 
 function handleFormSubmit (evt) {
