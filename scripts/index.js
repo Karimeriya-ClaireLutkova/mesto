@@ -27,10 +27,3 @@ function handleFormSubmit (evt) {
 redactor.addEventListener('click', showForm);
 cancel.addEventListener('click', closingForm);
 formElement.addEventListener('submit', handleFormSubmit);
-
-
-
-
-
-
-

@@ -4,4 +4,5 @@
   min-width: 246px;
   justify-content: space-between;
   margin:0 15px 0px 19px;
+  order: 2;
 }
