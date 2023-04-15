@@ -1,15 +1,17 @@
 .popup__title {
-  max-width: 330px;
+  width: 330px;
   font-size: 24px;
   font-weight: 900;
   line-height: 1.2;
+  text-overflow: ellipsis;
+  overflow: hidden;
   margin: 0;
   padding: 0;
   z-index: 1;
   order: 3;
   color: #000;
   box-sizing: border-box;
-  transform: translate(-28px, -296px);
+  transform: translate(-14px, -295px);
 }
 
 @media (max-width: 800px) {

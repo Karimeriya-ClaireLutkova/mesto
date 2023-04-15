@@ -81,21 +81,9 @@ function showForm(index) {
   }
 }
 
-/*function handleFormSubmit (evt) {
-  evt.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileJob.textContent = jobInput.value;
-  changesSaveForm();
-};
-function closingForm() {
-  forms.classList.remove('popup_opened');
-}
-*/
-
 redactor.addEventListener('click', ()=> showForm(0));
 adding.addEventListener('click', ()=> showForm(1));
-//cancel.addEventListener('click', closingForm);
-//formElement.addEventListener('submit', handleFormSubmit);
+
 formElement.forEach(formElementItem => {
   formElementItem.addEventListener('submit', function(evt){
     evt.preventDefault();
