@@ -8,8 +8,8 @@ const cancel = document.querySelector('.popup__button_close');
 const formElement = document.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__input_type_name');
 const jobInput = formElement.querySelector('.popup__input_type_profession');
-const cardTemplate = document.querySelector("#card").content;
-const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+const cardTemplate = document.querySelector('#card').content;
+const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 
 const initialCards = [
   {
@@ -57,11 +57,11 @@ function render() {
 }
 
 function showCard({ name, link, title }) {
-  const cardTemplate = document.querySelector("#card").content;
-  const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
-  cardElement.querySelector(".element__title").textContent = name;
-  cardElement.querySelector(".element__image").src = link;
-  cardElement.querySelector(".element__image").alt = title;
+  const cardTemplate = document.querySelector('#card').content;
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = name;
+  cardElement.querySelector('.element__image').src = link;
+  cardElement.querySelector('.element__image').alt = title;
 
   elementsPage.append(cardElement);
 }
