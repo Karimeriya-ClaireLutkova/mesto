@@ -21,59 +21,12 @@
       <button type="button" class="profile__button profile__button_add" aria-label="Добавить карточку места"></button>
     </section>
     <section class="elements" aria-label="Фотографии мест">
-      <div class="element">
-        <img class="element__image" src="./images/Карачаевск.jpg" alt="Церковь в Карачаевске">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Карачаевск</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>        
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/Гора_Эльбрус.jpg" alt="Степи у Эльбруса">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/Домбай.jpg" alt="Лес на горной территории Домбая">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>        
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/Гора_Эльбрус.jpg" alt="Степи у Эльбруса">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Гора Эльбрус</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/Домбай.jpg" alt="Лес на горной территории Домбая">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Домбай</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>
-      </div>
-      <div class="element">
-        <img class="element__image" src="./images/Карачаевск.jpg" alt="Церковь в Карачаевске">
-        <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
-        <div class="element__description">
-          <h2 class="element__title">Карачаево-Черкесcия</h2>
-          <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-        </div>
-      </div> 
     </section>
   </main>
   <footer class="footer">
     <p class="footer__copyright">&copy; 2023 Mesto Russia</p>
   </footer>
+
   <div class="popup">
     <form class="popup__form" name="profile">
       <fieldset class="popup__form-info">
@@ -89,15 +42,16 @@
     <h2 class="popup__title">Редактировать профиль</h2>
     <button type="button" class="popup__button popup__button_close" aria-label="Закрыть форму редактирования"></button>
   </div>
-  <template id="cardTemplate">
-    <div class="element">
-      <img class="element__image" src="./images/Карачаевск.jpg" alt="Церковь в Карачаевске">
-      <div class="element__description">
-        <h2 class="element__title">Карачаевск</h2>
-        <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
-      </div>        
-    </div> 
 
+  <template id="card">
+    <div class="element">
+      <img class="element__image" src="#" alt="Описание фотографии">
+      <button type="button" class="element__button element__button_delete" aria-label="Удалить карточку места"></button>
+      <div class="element__description">
+        <h2 class="element__title"></h2>
+        <button type="button" class="element__button element__button_like" aria-label="Поставить отметку"></button>
+      </div>     
+    </div>
   </template>
   <script src="./scripts/index.js"></script>
 </body>

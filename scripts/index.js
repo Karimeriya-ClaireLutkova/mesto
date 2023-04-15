@@ -1,11 +1,71 @@
-let redactor = document.querySelector('.profile__button_edit');
-let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__profession');
-let formEdit = document.querySelector('.popup');
-let cancel = document.querySelector('.popup__button_close');
-let formElement = document.querySelector('.popup__form');
-let nameInput = formElement.querySelector('.popup__input_type_name');
-let jobInput = formElement.querySelector('.popup__input_type_profession');
+const redactor = document.querySelector('.profile__button_edit');
+const profileName = document.querySelector('.profile__name');
+const profileJob = document.querySelector('.profile__profession');
+const elementsPage = document.querySelector('.elements');
+const cardPageAdd = document.querySelector('.card-page');
+const formEdit = document.querySelector('.popup');
+const cancel = document.querySelector('.popup__button_close');
+const formElement = document.querySelector('.popup__form');
+const nameInput = formElement.querySelector('.popup__input_type_name');
+const jobInput = formElement.querySelector('.popup__input_type_profession');
+const cardTemplate = document.querySelector("#card").content;
+const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+
+const initialCards = [
+  {
+    name: 'Карачаевск',
+    link: './images/Карачаевск.jpg',
+    title: 'Церковь в Карачаевске'
+  },
+  {
+    name: 'Гора Эльбрус',
+    link: './images/Гора_Эльбрус.jpg',
+    title: 'Степи у Эльбруса'
+  },
+  {
+    name: 'Домбай',
+    link: './images/Домбай.jpg',
+    title: 'Лес на горной территории Домбая'
+  },
+  {
+    name: 'Гора Эльбрус',
+    link: './images/Гора_Эльбрус.jpg',
+    title: 'Степи у Эльбруса'
+  },
+  {
+    name: 'Домбай',
+    link: './images/Домбай.jpg',
+    title: 'Лес на горной территории Домбая'
+  },
+  {
+    name: 'Карачаево-Черкесcия',
+    link: './images/Карачаевск.jpg',
+    title: 'Церковь в Карачаевске'
+  }
+];
+
+const cardInfo = initialCards.map(function (item) {
+  return {
+    name: item.name,
+    link: item.link,
+    title: item.title,
+  };
+});
+
+function render() {
+  cardInfo.forEach(showCard);
+}
+
+function showCard({ name, link, title }) {
+  const cardTemplate = document.querySelector("#card").content;
+  const cardElement = cardTemplate.querySelector(".element").cloneNode(true);
+  cardElement.querySelector(".element__title").textContent = name;
+  cardElement.querySelector(".element__image").src = link;
+  cardElement.querySelector(".element__image").alt = title;
+
+  elementsPage.append(cardElement);
+}
+render();
 
 function showForm() {  
   formEdit.classList.add('popup_opened');
