@@ -7,7 +7,6 @@
   background-position: 50% 50%;
   transform: translate(112px, -316px);
   order: 3;
-  z-index: 1;
 }
 
 .element__button_delete:hover {
