@@ -53,9 +53,11 @@ const formCardEdit = document.querySelector("[name='profile']");
 const formCardNew = document.querySelector("[name='new-card']");
 const nameInput = formCardEdit.querySelector('.popup__input_type_name');
 const jobInput = formCardEdit.querySelector('.popup__input_type_profession');
+const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
+const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-
+const cardNew = [];
 formsPopupAll.push(formPopupEdit, formPopupCard);
 console.log(formsPopupAll);
 
@@ -72,6 +74,15 @@ function showCard({ name, link, title }) {
   elementsPage.prepend(cardElement);
 }
 render();
+
+function assambleCard(name, link, title) {
+  const cardTemplate = document.querySelector('#card').content;
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = name;
+  cardElement.querySelector('.element__image').src = link;
+  cardElement.querySelector('.element__image').alt = title;
+  elementsPage.prepend(cardElement);
+}
 
 function showForm(index) {  
   formsPopupAll[index].classList.add('popup_opened');
@@ -92,6 +103,13 @@ formElement.forEach(formElementItem => {
     if (elemProfile !== null) {
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
+    };
+    const elemCardNew = elemTarget.querySelector('.popup__input_type_place-name');
+    if (elemCardNew !== null) {
+      const name = nameCard.value;
+      const link = linkImageCard.value;
+      const title = nameCard.value;
+      assambleCard(name, link, title);
     };
     const elemCancel = elemTarget.closest('.popup');
     elemCancel.classList.remove('popup_opened');
