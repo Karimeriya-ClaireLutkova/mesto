@@ -1,8 +1,10 @@
 const redactor = document.querySelector('.profile__button_edit');
+const adding = document.querySelector('.profile__button_add');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__profession');
 const elementsPage = document.querySelector('.elements');
-const formEdit = document.querySelector('.popup');
+const forms = document.querySelectorAll('.popup');
+console.log(forms);
 const cancel = document.querySelector('.popup__button_close');
 const formElement = document.querySelector('.popup__form');
 const nameInput = formElement.querySelector('.popup__input_type_name');
@@ -66,14 +68,14 @@ function showCard({ name, link, title }) {
 }
 render();
 
-function showForm() {  
-  formEdit.classList.add('popup_opened');
+function showForm(index) {  
+  forms[index].classList.add('popup_opened');
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
 
 function closingForm() {
-  formEdit.classList.remove('popup_opened');
+  forms.classList.remove('popup_opened');
 }
 
 function handleFormSubmit (evt) {
@@ -83,7 +85,8 @@ function handleFormSubmit (evt) {
   closingForm();
 };
 
-redactor.addEventListener('click', showForm);
+redactor.addEventListener('click', ()=> showForm(0));
+adding.addEventListener('click', ()=> showForm(1));
 cancel.addEventListener('click', closingForm);
 formElement.addEventListener('submit', handleFormSubmit);
 const deleteCard = elementsPage.querySelectorAll('.element__button_delete');
