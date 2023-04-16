@@ -58,8 +58,8 @@ const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 const cardNew = [];
+
 formsPopupAll.push(formPopupEdit, formPopupCard);
-console.log(formsPopupAll);
 
 function render() {
   cardInfo.forEach(showCard);
@@ -81,10 +81,18 @@ function assambleCard(name, link, title) {
   cardElement.querySelector('.element__title').textContent = name;
   cardElement.querySelector('.element__image').src = link;
   cardElement.querySelector('.element__image').alt = title;
+  const buttonDelNew = cardElement.querySelectorAll('.element__button_delete');
+  buttonDelNew.forEach(buttonDelNewItem => {
+    buttonDelNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      const elemDel = elemTarget.closest('.element');
+      elemDel.remove();
+    });
+  });
   elementsPage.prepend(cardElement);
 }
-
-function showForm(index) {  
+ 
+function showForm(index) {
   formsPopupAll[index].classList.add('popup_opened');
   if (index === 0) {
     nameInput.value = profileName.textContent;
