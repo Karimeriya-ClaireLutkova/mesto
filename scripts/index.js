@@ -47,19 +47,22 @@ const elementsPage = document.querySelector('.elements');
 const formsPopupAll = [];
 const formPopupEdit = document.querySelector('.popup-info');
 const formPopupCard = document.querySelector('.popup-cardNew');
+const formPopupView = document.querySelector('.popup-imageView');
 const cancel = document.querySelectorAll('.popup__button_close');
 const formElement = document.querySelectorAll('.popup__form');
 const formCardEdit = document.querySelector("[name='profile']");
 const formCardNew = document.querySelector("[name='new-card']");
+const formCardView = document.querySelector("[name='view-image']");
 const nameInput = formCardEdit.querySelector('.popup__input_type_name');
 const jobInput = formCardEdit.querySelector('.popup__input_type_profession');
 const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
 const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
+const imageCardView = formCardView.querySelector('.popup__image');
+console.log(imageCardView);
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-const cardNew = [];
 
-formsPopupAll.push(formPopupEdit, formPopupCard);
+formsPopupAll.push(formPopupEdit, formPopupCard, formPopupView);
 
 function render() {
   cardInfo.forEach(showCard);
@@ -130,6 +133,12 @@ deleteCard.forEach(deleteCardItem => {
     const elemTarget = evt.target;
     const elemDel = elemTarget.closest('.element');
     elemDel.remove();
+  });
+});
+const viewing = elementsPage.querySelectorAll('.element__image');
+viewing.forEach(viewingItem => {
+  viewingItem.addEventListener('click', function(evt){
+    showForm(2);
   });
 });
 
