@@ -93,6 +93,17 @@ function assambleCard(name, link, title) {
     });
   });
   elementsPage.prepend(cardElement);
+  const imgViewNew = elementsPage.querySelectorAll('.element__image');
+  imgViewNew.forEach(imgViewNewItem => {
+    imgViewNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      const elemView = elemTarget.closest('.element');
+      elemSubtitleView = elemView.querySelector('.element__title');
+      imageCardView.src = elemTarget.src;
+      imageSubtitleView.textContent = elemSubtitleView.textContent;
+      showForm(2);
+    });
+  });
 }
  
 function showForm(index) {
@@ -121,6 +132,8 @@ formElement.forEach(formElementItem => {
       const link = linkImageCard.value;
       const title = nameCard.value;
       assambleCard(name, link, title);
+      nameCard.value = '';
+      linkImageCard.value = '';
     };
     const elemCancel = elemTarget.closest('.popup');
     elemCancel.classList.remove('popup_opened');
@@ -135,6 +148,7 @@ deleteCard.forEach(deleteCardItem => {
     elemDel.remove();
   });
 });
+
 const viewing = elementsPage.querySelectorAll('.element__image');
 viewing.forEach(viewingItem => {
   viewingItem.addEventListener('click', function(evt){
