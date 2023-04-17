@@ -58,7 +58,6 @@ const jobInput = formCardEdit.querySelector('.popup__input_type_profession');
 const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
 const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
 const imageCardView = formCardView.querySelector('.popup__image');
-console.log(imageCardView);
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 
@@ -138,6 +137,8 @@ deleteCard.forEach(deleteCardItem => {
 const viewing = elementsPage.querySelectorAll('.element__image');
 viewing.forEach(viewingItem => {
   viewingItem.addEventListener('click', function(evt){
+    const elemTarget = evt.target;
+    imageCardView.src = elemTarget.src;
     showForm(2);
   });
 });
