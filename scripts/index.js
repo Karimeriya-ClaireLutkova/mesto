@@ -92,6 +92,13 @@ function assambleCard(name, link, title) {
       elemDel.remove();
     });
   });
+  const buttonLikeNew = cardElement.querySelectorAll('.element__button_like');
+  buttonLikeNew.forEach(buttonLikeNewItem => {
+    buttonLikeNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      elemTarget.classList.toggle('element__button_like_active');
+    });
+  });
   elementsPage.prepend(cardElement);
   const imgViewNew = elementsPage.querySelectorAll('.element__image');
   imgViewNew.forEach(imgViewNewItem => {
@@ -148,6 +155,14 @@ deleteCard.forEach(deleteCardItem => {
     elemDel.remove();
   });
 });
+
+const preference = cardElement.querySelectorAll('.element__button_like');
+  preference.forEach(preferenceItem => {
+    preferenceItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      elemTarget.classList.toggle('element__button_like_active');
+    });
+  });
 
 const viewing = elementsPage.querySelectorAll('.element__image');
 viewing.forEach(viewingItem => {
