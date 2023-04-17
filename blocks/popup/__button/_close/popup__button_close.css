@@ -8,7 +8,7 @@
   margin: 155px 0 8px;
   z-index: 1;
   order: 1;
-  transform: translate(239px, 0px);
+  transform: translate(239px, 0);
 }
 
 .popup__button_close:hover {
