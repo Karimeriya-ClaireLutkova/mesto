@@ -156,7 +156,7 @@ deleteCard.forEach(deleteCardItem => {
   });
 });
 
-const preference = cardElement.querySelectorAll('.element__button_like');
+const preference = elementsPage.querySelectorAll('.element__button_like');
   preference.forEach(preferenceItem => {
     preferenceItem.addEventListener('click', function(evt){
       const elemTarget = evt.target;
