@@ -7,3 +7,7 @@
   order: 1;
   object-fit: cover;
 }
+
+.element__image:hover {
+  opacity: 0.9;
+}
