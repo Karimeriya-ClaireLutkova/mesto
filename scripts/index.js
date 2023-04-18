@@ -52,7 +52,7 @@ const cancel = document.querySelectorAll('.popup__button_close');
 const formElement = document.querySelectorAll('.popup__form');
 const formCardEdit = document.querySelector("[name='profile']");
 const formCardNew = document.querySelector("[name='new-card']");
-const formCardView = document.querySelector("[name='view-image']");
+const formCardView = document.querySelector('.popup__container_type_image-view');
 const nameInput = formCardEdit.querySelector('.popup__input_type_name');
 const jobInput = formCardEdit.querySelector('.popup__input_type_profession');
 const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
