@@ -1,15 +1,5 @@
 .popup__form {
-  background-color: #FFF;
-  border-radius: 10px;
-  padding: 111px 36px 37px;
-  box-sizing: border-box;
   position: relative;
   color: #000;
-  order: 2;
-}
-
-@media (max-width: 800px) {
-  .popup__form {
-    padding: 122px 22px 25px;
-  }
+  margin: 0;
 }
