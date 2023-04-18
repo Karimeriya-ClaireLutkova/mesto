@@ -112,7 +112,7 @@ function assambleCard(name, link, title) {
     });
   });
 }
- 
+
 function showForm(index) {
   formsPopupAll[index].classList.add('popup_opened');
   if (index === 0) {
