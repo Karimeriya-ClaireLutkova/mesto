@@ -1,3 +1,11 @@
+const cardInfo = initialCards.map(function (item) {
+  return {
+    name: item.name,
+    link: item.link,
+    title: item.title,
+  };
+});
+
 const editProfileButton = document.querySelector('.profile__button_edit');
 const addingCardButton = document.querySelector('.profile__button_add');
 const profileName = document.querySelector('.profile__name');
@@ -20,54 +28,53 @@ const imageSubtitleView = formCardView.querySelector('.popup__subtitle');
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
 
+function render() {
+  cardInfo.forEach(showCard);
+}
 
-function createCard ({name, link, title}) {
+function showCard({ name, link, title }) {
   const cardTemplate = document.querySelector('#card').content;
   const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
   cardElement.querySelector('.element__title').textContent = name;
   cardElement.querySelector('.element__image').src = link;
   cardElement.querySelector('.element__image').alt = title;
-  const deleteCardButton = cardElement.querySelector('.element__button_delete');
-  deleteCardButton.addEventListener('click', function(evt){
-    const elemTarget = evt.target;
-    const elemDel = elemTarget.closest('.element');
-    elemDel.remove();
-    });
-  const likeCardButton = cardElement.querySelector('.element__button_like');
-  likeCardButton.addEventListener('click', function(evt){
-    const elemTarget = evt.target;
-    elemTarget.classList.toggle('element__button_like_active');
-  });
-  const viewImageCard = cardElement.querySelector('.element__image');
-  viewImageCard.addEventListener('click', function(evt){
-    const elemTarget = evt.target;
-    const elemView = elemTarget.closest('.element');
-    elemSubtitleView = elemView.querySelector('.element__title');
-    imageCardView.src = elemTarget.src;
-    imageSubtitleView.textContent = elemSubtitleView.textContent;
-    showForm(viewCardPopup);
-  });
-  return cardElement;
-}
-
-
-function showCard(item, sectionPageCards) {
-  const cardElement = createCard(item);
-  sectionPageCards.append(cardElement);
-}
-
-initialCards.forEach((item) => { 
-  showCard(item, sectionPageCards);
-});
-
-function assambleCard(item, sectionPageCards) {
-  const cardElement = createCard(item);
-  cardElement.name = nameCard.value;
-  cardElement.link = linkImageCard.value;
-  cardElement.title = nameCard.value;
   sectionPageCards.prepend(cardElement);
-  nameCard.value = '';
-  linkImageCard.value = '';
+}
+render();
+
+function assambleCard(name, link, title) {
+  const cardTemplate = document.querySelector('#card').content;
+  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+  cardElement.querySelector('.element__title').textContent = name;
+  cardElement.querySelector('.element__image').src = link;
+  cardElement.querySelector('.element__image').alt = title;
+  const buttonDelNew = cardElement.querySelectorAll('.element__button_delete');
+  buttonDelNew.forEach(buttonDelNewItem => {
+    buttonDelNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      const elemDel = elemTarget.closest('.element');
+      elemDel.remove();
+    });
+  });
+  const buttonLikeNew = cardElement.querySelectorAll('.element__button_like');
+  buttonLikeNew.forEach(buttonLikeNewItem => {
+    buttonLikeNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      elemTarget.classList.toggle('element__button_like_active');
+    });
+  });
+  sectionPageCards.prepend(cardElement);
+  const imgViewNew = sectionPageCards.querySelectorAll('.element__image');
+  imgViewNew.forEach(imgViewNewItem => {
+    imgViewNewItem.addEventListener('click', function(evt){
+      const elemTarget = evt.target;
+      const elemView = elemTarget.closest('.element');
+      elemSubtitleView = elemView.querySelector('.element__title');
+      imageCardView.src = elemTarget.src;
+      imageSubtitleView.textContent = elemSubtitleView.textContent;
+      showForm(viewCardPopup);
+    });
+  });
 }
 
 function showForm(item) {
@@ -92,7 +99,10 @@ listFofmsPopup.forEach(listFofmsPopupItem => {
     };
     const elemCardNew = elemTarget.querySelector('.popup__input_type_place-name');
     if (elemCardNew !== null) {
-      assambleCard(item, sectionPageCards);
+      const name = nameCard.value;
+      const link = linkImageCard.value;
+      const title = nameCard.value;
+      assambleCard(name, link, title);
       nameCard.value = '';
       linkImageCard.value = '';
     };
