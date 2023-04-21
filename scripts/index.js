@@ -71,7 +71,7 @@ function assambleCard(item, sectionPageCards) {
 }
 
 function showForm(item) {
-  item.classList.add('popup_opened');
+  item.classList.toggle('popup_opened');
 }
 
 editProfileButton.addEventListener('click', ()=> showForm(editProfilePopup,
@@ -85,22 +85,22 @@ listFofmsPopup.forEach(listFofmsPopupItem => {
   listFofmsPopupItem.addEventListener('submit', function(evt){
     evt.preventDefault();
     const elemTarget = evt.target;
-    const elemProfile = elemTarget.querySelector('.popup__input_type_name');
-    if (elemProfile !== null) {
+    const elemPopup = elemTarget.closest('.popup');
+    if (elemPopup.classList === editProfilePopup.classList) {
       profileName.textContent = nameInput.value;
       profileJob.textContent = jobInput.value;
-    };
-    const elemCardNew = elemTarget.querySelector('.popup__input_type_place-name');
-    if (elemCardNew !== null) {
-      assambleCard(item, sectionPageCards);
+    } else if (elemPopup.classList === addingCardPopup.classList) {
+      const name = nameCard.value;
+      const link = linkImageCard.value;
+      const title = nameCard.value;
+      assambleCard(name, link, title);
       nameCard.value = '';
       linkImageCard.value = '';
-    };
-    const elemCancel = elemTarget.closest('.popup');
-    elemCancel.classList.remove('popup_opened');
+    };    
+    showForm(elemPopup);
   });
 });
-
+/*
 const deleteCard = sectionPageCards.querySelectorAll('.element__button_delete');
 deleteCard.forEach(deleteCardItem => {
   deleteCardItem.addEventListener('click', function(evt){
@@ -115,8 +115,8 @@ const preference = sectionPageCards.querySelectorAll('.element__button_like');
     preferenceItem.addEventListener('click', function(evt){
       const elemTarget = evt.target;
       elemTarget.classList.toggle('element__button_like_active');
-    });
   });
+});
 
 const viewing = sectionPageCards.querySelectorAll('.element__image');
 viewing.forEach(viewingItem => {
@@ -129,11 +129,11 @@ viewing.forEach(viewingItem => {
     showForm(viewCardPopup);
   });
 });
-
+*/
 closePopupButtons.forEach(canselItem => {
   canselItem.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     const elemCancel = elemTarget.closest('.popup');
-    elemCancel.classList.remove('popup_opened');
+    showForm(elemCancel);
   });
 });
