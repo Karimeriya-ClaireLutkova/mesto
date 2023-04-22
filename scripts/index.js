@@ -2,23 +2,26 @@ const editProfileButton = document.querySelector('.profile__button_edit');
 const addingCardButton = document.querySelector('.profile__button_add');
 const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__profession');
-const sectionPageCards = document.querySelector('.elements');
+
 const editProfilePopup = document.querySelector('.popup_type_profile-info');
-const addingCardPopup = document.querySelector('.popup_type_card-new');
-const viewCardPopup = document.querySelector('.popup_type_image-view');
-const closePopupButtons = document.querySelectorAll('.popup__button_close');
 const formProfile = document.querySelector("[name='profile']");
-const formCardNew = document.querySelector("[name='new-card']");
-const formCardView = document.querySelector('.popup__container_type_image');
 const nameInput = formProfile.querySelector('.popup__input_type_name');
 const jobInput = formProfile.querySelector('.popup__input_type_profession');
+
+const addingCardPopup = document.querySelector('.popup_type_card-new');
+const formCardNew = document.querySelector("[name='new-card']");
 const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
 const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
+
+const viewCardPopup = document.querySelector('.popup_type_image-view');
+const formCardView = document.querySelector('.popup__container_type_image');
 const imageCardView = formCardView.querySelector('.popup__image');
 const imageSubtitleView = formCardView.querySelector('.popup__subtitle');
+
+const sectionPageCards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#card').content;
 const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-
+const closePopupButtons = document.querySelectorAll('.popup__button_close');
 
 function createCard ({name, link, title}) {
   const cardTemplate = document.querySelector('#card').content;
@@ -49,13 +52,12 @@ function createCard ({name, link, title}) {
   return cardElement;
 }
 
-
 function showCard(item, sectionPageCards) {
   const cardElement = createCard(item);
   sectionPageCards.append(cardElement);
 }
 
-initialCards.forEach((item) => { 
+initialCards.forEach((item) => {
   showCard(item, sectionPageCards);
 });
 

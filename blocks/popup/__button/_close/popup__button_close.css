@@ -24,6 +24,6 @@
 
 @media (max-width: 800px) {
   .popup__button_close {
-    transform: translate(22px, -40px); 
+    transform: translate(22px, -40px);
   }
 }

@@ -28,5 +28,5 @@ const initialCards = [
     name: 'Карачаево-Черкесcия',
     link: './images/Карачаевск.jpg',
     title: 'Церковь в Карачаевске'
-  } 
+  }
 ];
