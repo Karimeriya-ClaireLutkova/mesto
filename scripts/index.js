@@ -20,41 +20,41 @@ const imageSubtitleView = formCardView.querySelector('.popup__subtitle');
 
 const sectionPageCards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#card').content;
-const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
+const cardElementTemplate = cardTemplate.querySelector('.element');
 const closePopupButtons = document.querySelectorAll('.popup__button_close');
 
 function createCard ({name, link, title}) {
-  const cardTemplate = document.querySelector('#card').content;
-  const cardElement = cardTemplate.querySelector('.element').cloneNode(true);
-  cardElement.querySelector('.element__title').textContent = name;
-  cardElement.querySelector('.element__image').src = link;
-  cardElement.querySelector('.element__image').alt = title;
-  const deleteCardButton = cardElement.querySelector('.element__button_delete');
+  const preparedCard = cardElementTemplate.cloneNode(true);
+  const imageCard = preparedCard.querySelector('.element__image');
+  const titleCard = preparedCard.querySelector('.element__title');
+  titleCard.textContent = name;
+  imageCard.src = link;
+  imageCard.alt = title;
+  const deleteCardButton = preparedCard.querySelector('.element__button_delete');
   deleteCardButton.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     const elemDel = elemTarget.closest('.element');
     elemDel.remove();
     });
-  const likeCardButton = cardElement.querySelector('.element__button_like');
+  const likeCardButton = preparedCard.querySelector('.element__button_like');
   likeCardButton.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     elemTarget.classList.toggle('element__button_like_active');
   });
-  const viewImageCard = cardElement.querySelector('.element__image');
-  viewImageCard.addEventListener('click', function(evt){
+  imageCard.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     const elemView = elemTarget.closest('.element');
     elemSubtitleView = elemView.querySelector('.element__title');
     imageCardView.src = elemTarget.src;
     imageSubtitleView.textContent = elemSubtitleView.textContent;
-    showForm(viewCardPopup);
+    openPopup(viewCardPopup);
   });
-  return cardElement;
+  return preparedCard;
 }
 
 function showCard(item, sectionPageCards) {
-  const cardElement = createCard(item);
-  sectionPageCards.append(cardElement);
+  const preparedCard = createCard(item);
+  sectionPageCards.append(preparedCard);
 }
 
 initialCards.forEach((item) => {
@@ -62,26 +62,30 @@ initialCards.forEach((item) => {
 });
 
 function assambleCard(item, sectionPageCards) {
-  const cardElement = createCard(item);
-  sectionPageCards.prepend(cardElement);
+  const preparedCard = createCard(item);
+  sectionPageCards.prepend(preparedCard);
 }
 
-function showForm(item) {
-  item.classList.toggle('popup_opened');
+function openPopup(item) {
+  item.classList.add('popup_opened');
 }
 
-editProfileButton.addEventListener('click', ()=> showForm(editProfilePopup,
+function closePopup(item) {
+  item.classList.remove('popup_opened');
+}
+
+editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent
 ));
 
-addingCardButton.addEventListener('click', ()=> showForm(addingCardPopup));
+addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup));
 
 formProfile.addEventListener('submit', function(evt){
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    showForm(editProfilePopup);
+    closePopup(editProfilePopup);
 });
 
 formCardNew.addEventListener('submit', function(evt){
@@ -92,13 +96,13 @@ formCardNew.addEventListener('submit', function(evt){
   assambleCard ({name, link, title}, sectionPageCards);
   nameCard.value = '';
   linkImageCard.value = '';
-  showForm(addingCardPopup);
+  closePopup(addingCardPopup);
 });
 
 closePopupButtons.forEach(canselItem => {
   canselItem.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     const elemCancel = elemTarget.closest('.popup');
-    showForm(elemCancel);
+    closePopup(elemCancel);
   });
 });
