@@ -106,3 +106,10 @@ closePopupButtons.forEach(canselItem => {
     closePopup(elemCancel);
   });
 });
+
+document.addEventListener('click', function(evt) {
+  if(evt.target.classList.contains('popup')) {
+    const elemTarget = evt.target;
+    closePopup(elemTarget);
+  };
+})
