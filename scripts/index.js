@@ -18,6 +18,7 @@ const formCardView = document.querySelector('.popup__container_type_image');
 const imageCardView = formCardView.querySelector('.popup__image');
 const imageSubtitleView = formCardView.querySelector('.popup__subtitle');
 
+const listPopups = document.querySelectorAll('.popup');
 const sectionPageCards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#card').content;
 const cardElementTemplate = cardTemplate.querySelector('.element');
@@ -111,5 +112,11 @@ document.addEventListener('click', function(evt) {
   if(evt.target.classList.contains('popup')) {
     const elemTarget = evt.target;
     closePopup(elemTarget);
+  };
+})
+document.addEventListener('keydown', function(evt) {
+  if(evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened');
+    closePopup(activePopup);
   };
 })
