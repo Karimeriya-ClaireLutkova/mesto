@@ -71,10 +71,12 @@ function assambleCard(item, sectionPageCards) {
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+  document.addEventListener('keydown', closePopupKeydown);
 }
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupKeydown);
 }
 
 function clearError(errorElements) {
@@ -88,6 +90,15 @@ function hideError(listInputs) {
   listInputs.forEach((item) => {
     item.classList.remove('popup__input_type_error');
   });
+}
+
+function closePopupKeydown (evt) {
+  if(evt.key === 'Escape') {
+    const activePopup = document.querySelector('.popup_opened');
+    clearError(errorElements);
+    hideError(listInputs);
+    closePopup(activePopup);
+  };
 }
 
 editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
@@ -134,14 +145,5 @@ document.addEventListener('click', function(evt) {
     clearError(errorElements);
     hideError(listInputs);
     closePopup(elemTarget);
-  };
-})
-
-document.addEventListener('keydown', function(evt) {
-  if(evt.key === 'Escape') {
-    const activePopup = document.querySelector('.popup_opened');
-    clearError(errorElements);
-    hideError(listInputs);
-    closePopup(activePopup);
   };
 })
