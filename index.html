@@ -34,12 +34,12 @@
       <form class="popup__form" name="profile" novalidate>
         <div class="popup__form-info">
           <div class="popup__field">
-            <input id="name-profile" type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required>
-            <span class="name-profile-error form__input-error">Необходимо заполнить данное поле</span>
+            <input id="profile-name-input" type="text" class="popup__input popup__input_type_name" name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required>
+            <span class="profile-name-input-error popup__input-error">Необходимо заполнить данное поле</span>
           </div>
           <div class="popup__field">
-            <input type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="Профессия" value="" minlength="2" maxlength="200" required>
-            <span class="form__input-error">Необходимо заполнить данное поле</span>
+            <input id="profile-profession-input"type="text" class="popup__input popup__input_type_profession" name="profession" placeholder="Профессия" value="" minlength="2" maxlength="200" required>
+            <span class="profile-profession-input-error popup__input-error">Необходимо заполнить данное поле</span>
           </div>
           <button type="submit" class="popup__button popup__button_save">Сохранить</button>
         </div>
@@ -54,12 +54,12 @@
       <form class="popup__form" name="new-card" novalidate>
         <div class="popup__form-info">
           <div class="popup__field">
-            <input type="text" class="popup__input popup__input_type_place-name" name="title" placeholder="Название" value="" minlength="2" maxlength="30" required>
-            <span class="form__input-error">Необходимо заполнить данное поле</span>
+            <input id="place-name-input" type="text" class="popup__input popup__input_type_place-name" name="title" placeholder="Название" value="" minlength="2" maxlength="30" required>
+            <span class="place-name-input-error popup__input-error">Необходимо заполнить данное поле</span>
           </div>
           <div class="popup__field">
-            <input type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" value="" required>
-            <span class="form__input-error">Необходимо заполнить данное поле</span>
+            <input id="place-link-input" type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" value="" required>
+            <span class="place-link-input-error popup__input-error">Необходимо заполнить данное поле</span>
           </div>
           <button type="submit" class="popup__button popup__button_add">Создать</button>
         </div>
