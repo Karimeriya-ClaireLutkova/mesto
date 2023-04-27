@@ -77,16 +77,21 @@ function closePopup(item) {
 
 editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
-  jobInput.value = profileJob.textContent
+  jobInput.value = profileJob.textContent,
+  enableValidation(editProfilePopup)
 ));
 
-addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup));
+addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup, 
+  nameCard.value = '',
+  linkImageCard.value = '',
+  enableValidation(addingCardPopup)
+));
 
 formProfile.addEventListener('submit', function(evt){
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(editProfilePopup);
+    closePopup(editProfilePopup);    
 });
 
 formCardNew.addEventListener('submit', function(evt){
@@ -95,11 +100,7 @@ formCardNew.addEventListener('submit', function(evt){
   const link = linkImageCard.value;
   const title = nameCard.value;
   assambleCard ({name, link, title}, sectionPageCards);
-  nameCard.value = '';
-  linkImageCard.value = '';
-  closePopup(addingCardPopup);
-  nameCard.value = '';
-  linkImageCard.value = '';
+  closePopup(addingCardPopup);  
 });
 
 closePopupButtons.forEach(canselItem => {
