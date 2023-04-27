@@ -98,6 +98,8 @@ formCardNew.addEventListener('submit', function(evt){
   nameCard.value = '';
   linkImageCard.value = '';
   closePopup(addingCardPopup);
+  nameCard.value = '';
+  linkImageCard.value = '';
 });
 
 closePopupButtons.forEach(canselItem => {

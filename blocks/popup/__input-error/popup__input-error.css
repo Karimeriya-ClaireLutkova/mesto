@@ -9,4 +9,5 @@
   text-overflow: ellipsis;
   overflow: hidden;
   color: #FF0000;
+  opacity: 0;
 }
