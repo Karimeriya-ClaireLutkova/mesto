@@ -22,6 +22,8 @@ const listPopups = document.querySelectorAll('.popup');
 const sectionPageCards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#card').content;
 const cardElementTemplate = cardTemplate.querySelector('.element');
+const errorElements = document.querySelectorAll('.popup__input-error');
+const listInputs = document.querySelectorAll('.popup__input');
 const closePopupButtons = document.querySelectorAll('.popup__button_close');
 
 function createCard ({name, link, title}) {
@@ -75,6 +77,19 @@ function closePopup(item) {
   item.classList.remove('popup_opened');
 }
 
+function clearError(errorElements) {
+  errorElements.forEach((item) => {
+    item.classList.remove('popup__input-error_active');
+    item.textContent = '';
+  });
+}
+
+function hideError(listInputs) {
+  listInputs.forEach((item) => {
+    item.classList.remove('popup__input_type_error');
+  });
+}
+
 editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent,
@@ -107,6 +122,8 @@ closePopupButtons.forEach(canselItem => {
   canselItem.addEventListener('click', function(evt){
     const elemTarget = evt.target;
     const elemCancel = elemTarget.closest('.popup');
+    clearError(errorElements);
+    hideError(listInputs);
     closePopup(elemCancel);
   });
 });
@@ -114,12 +131,17 @@ closePopupButtons.forEach(canselItem => {
 document.addEventListener('click', function(evt) {
   if(evt.target.classList.contains('popup')) {
     const elemTarget = evt.target;
+    clearError(errorElements);
+    hideError(listInputs);
     closePopup(elemTarget);
   };
 })
+
 document.addEventListener('keydown', function(evt) {
   if(evt.key === 'Escape') {
     const activePopup = document.querySelector('.popup_opened');
+    clearError(errorElements);
+    hideError(listInputs);
     closePopup(activePopup);
   };
 })
