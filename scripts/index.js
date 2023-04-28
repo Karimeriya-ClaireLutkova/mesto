@@ -153,6 +153,7 @@ document.addEventListener('click', function(evt) {
     const elemTarget = evt.target;
     clearError(errorElements);
     hideError(listInputs);
+    restoringSizeField(fieldList);
     closePopup(elemTarget);
   };
 })
