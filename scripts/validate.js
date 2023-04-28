@@ -1,15 +1,25 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add('popup__input_type_error');
-  errorElement.textContent = errorMessage;
+  errorElement.textContent = errorMessage + 'jjjjgjhggiukgibkjhijhg jguyjhghoilkkmn jhfhjkhjl;. jkyo;lk; fhjg';
+  const listFieldForm = formElement.querySelectorAll('.popup__field');
+  if (errorMessage.length > 60) {    
+    listFieldForm.forEach((elem) => {
+     elem.classList.add('popup__field_type_error');
+    });
+  };
   errorElement.classList.add('popup__input-error_active');
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-    inputElement.classList.remove('popup__input_type_error');
-    errorElement.classList.remove('popup__input-error_active');
-    errorElement.textContent = '';
+  inputElement.classList.remove('popup__input_type_error');
+  errorElement.classList.remove('popup__input-error_active');
+  errorElement.textContent = '';
+  const listFieldForm = formElement.querySelectorAll('.popup__field');
+  listFieldForm.forEach((elem) => {
+    elem.classList.remove('popup__field_type_error');
+  });  
 };
 
 const isValid = (formElement, inputElement) => {
@@ -46,7 +56,7 @@ const setEventListeners = (formElement) => {
   });
 };
 
-const enableValidation = (item) => {
+const formValidation = (item) => {
   const formList = Array.from(item.querySelectorAll('.popup__form'));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', (evt) => {
@@ -56,5 +66,5 @@ const enableValidation = (item) => {
     fieldsetList.forEach((fieldSet) => {
       setEventListeners(fieldSet);
     }); 
-  });
+  })
 };

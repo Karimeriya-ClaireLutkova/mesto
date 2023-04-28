@@ -104,13 +104,13 @@ function closePopupKeydown (evt) {
 editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent,
-  enableValidation(editProfilePopup)
+  formValidation(editProfilePopup)
 ));
 
 addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup, 
   nameCard.value = '',
   linkImageCard.value = '',
-  enableValidation(addingCardPopup)
+  formValidation(addingCardPopup)
 ));
 
 formProfile.addEventListener('submit', function(evt){

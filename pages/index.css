@@ -44,3 +44,4 @@
 @import url(../blocks/popup/__button/_close/popup__button_close_form-grow.css);
 @import url(../blocks/popup/__button/_add/popup__button_add.css);
 @import url(../blocks/popup/__button/_inactive/popup__button_inactive.css);
+@import url(../blocks/popup/__field/_type/popup__field_type_error.css);
