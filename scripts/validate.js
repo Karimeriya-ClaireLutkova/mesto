@@ -2,7 +2,7 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(enableValidation.inputErrorClass);
   errorElement.textContent = errorMessage;
-  if (errorMessage.length > 60) {
+  if (errorMessage.length > 70) {
     increaseFormView (formElement);
   };
   errorElement.classList.add(enableValidation.errorClass);

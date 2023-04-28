@@ -50,6 +50,7 @@ function createCard ({name, link, title}) {
     const elemView = elemTarget.closest('.element');
     elemSubtitleView = elemView.querySelector('.element__title');
     imageCardView.src = elemTarget.src;
+    imageCardView.alt = elemTarget.alt;
     imageSubtitleView.textContent = elemSubtitleView.textContent;
     openPopup(viewCardPopup);
   });
