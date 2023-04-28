@@ -62,7 +62,7 @@ function showCard(item, sectionPageCards) {
 
 initialCards.forEach((item) => {
   showCard(item, sectionPageCards);
-});
+})
 
 function assambleCard(item, sectionPageCards) {
   const preparedCard = createCard(item);
@@ -105,20 +105,20 @@ editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent,
   formValidation(editProfilePopup)
-));
+))
 
-addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup, 
+addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup,
   nameCard.value = '',
   linkImageCard.value = '',
   formValidation(addingCardPopup)
-));
+))
 
 formProfile.addEventListener('submit', function(evt){
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
-    closePopup(editProfilePopup);    
-});
+    closePopup(editProfilePopup);
+})
 
 formCardNew.addEventListener('submit', function(evt){
   evt.preventDefault();
@@ -126,8 +126,8 @@ formCardNew.addEventListener('submit', function(evt){
   const link = linkImageCard.value;
   const title = nameCard.value;
   assambleCard ({name, link, title}, sectionPageCards);
-  closePopup(addingCardPopup);  
-});
+  closePopup(addingCardPopup);
+})
 
 closePopupButtons.forEach(canselItem => {
   canselItem.addEventListener('click', function(evt){
@@ -137,7 +137,7 @@ closePopupButtons.forEach(canselItem => {
     hideError(listInputs);
     closePopup(elemCancel);
   });
-});
+})
 
 document.addEventListener('click', function(evt) {
   if(evt.target.classList.contains('popup')) {
