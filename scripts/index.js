@@ -22,6 +22,7 @@ const listPopups = document.querySelectorAll('.popup');
 const sectionPageCards = document.querySelector('.elements');
 const cardTemplate = document.querySelector('#card').content;
 const cardElementTemplate = cardTemplate.querySelector('.element');
+const fieldList = document.querySelectorAll('.popup__field');
 const errorElements = document.querySelectorAll('.popup__input-error');
 const listInputs = document.querySelectorAll('.popup__input');
 const closePopupButtons = document.querySelectorAll('.popup__button_close');
@@ -34,17 +35,17 @@ function createCard ({name, link, title}) {
   imageCard.src = link;
   imageCard.alt = title;
   const deleteCardButton = preparedCard.querySelector('.element__button_delete');
-  deleteCardButton.addEventListener('click', function(evt){
+  deleteCardButton.addEventListener('click', function(evt) {
     const elemTarget = evt.target;
     const elemDel = elemTarget.closest('.element');
     elemDel.remove();
     });
   const likeCardButton = preparedCard.querySelector('.element__button_like');
-  likeCardButton.addEventListener('click', function(evt){
+  likeCardButton.addEventListener('click', function(evt) {
     const elemTarget = evt.target;
     elemTarget.classList.toggle('element__button_like_active');
   });
-  imageCard.addEventListener('click', function(evt){
+  imageCard.addEventListener('click', function(evt) {
     const elemTarget = evt.target;
     const elemView = elemTarget.closest('.element');
     elemSubtitleView = elemView.querySelector('.element__title');
@@ -61,7 +62,7 @@ function showCard(item, sectionPageCards) {
 }
 
 initialCards.forEach((item) => {
-  showCard(item, sectionPageCards);
+  showCard(item, sectionPageCards)
 })
 
 function assambleCard(item, sectionPageCards) {
@@ -92,11 +93,18 @@ function hideError(listInputs) {
   });
 }
 
+function restoringSizeField(fieldList) {
+  fieldList.forEach((item) => {
+    item.classList.remove('popup__field_type_error');
+  });
+}
+
 function closePopupKeydown (evt) {
   if(evt.key === 'Escape') {
     const activePopup = document.querySelector('.popup_opened');
     clearError(errorElements);
     hideError(listInputs);
+    restoringSizeField(fieldList);
     closePopup(activePopup);
   };
 }
@@ -135,6 +143,7 @@ closePopupButtons.forEach(canselItem => {
     const elemCancel = elemTarget.closest('.popup');
     clearError(errorElements);
     hideError(listInputs);
+    restoringSizeField(fieldList);
     closePopup(elemCancel);
   });
 })
