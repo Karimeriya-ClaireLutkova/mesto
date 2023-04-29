@@ -113,14 +113,14 @@ buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
   linkImageCard.value = ''
 ))
 
-formProfile.addEventListener('submit', function(evt){
+formProfile.addEventListener('submit', function(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
     profileJob.textContent = jobInput.value;
     closePopup(popupProfile);
 })
 
-formCardNew.addEventListener('submit', function(evt){
+formCardNew.addEventListener('submit', function(evt) {
   evt.preventDefault();
   const name = nameCard.value;
   const link = linkImageCard.value;
@@ -130,7 +130,7 @@ formCardNew.addEventListener('submit', function(evt){
 })
 
 buttonsClosePopup.forEach(canselItem => {
-  canselItem.addEventListener('click', function(evt){
+  canselItem.addEventListener('click', function(evt) {
     const elemTarget = evt.target;
     const elemCancel = elemTarget.closest('.popup');
     closePopup(elemCancel);
