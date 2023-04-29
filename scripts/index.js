@@ -112,14 +112,12 @@ function closePopupKeydown (evt) {
 
 editProfileButton.addEventListener('click', ()=> openPopup(editProfilePopup,
   nameInput.value = profileName.textContent,
-  jobInput.value = profileJob.textContent,
-  formValidation(editProfilePopup)
+  jobInput.value = profileJob.textContent
 ))
 
 addingCardButton.addEventListener('click', ()=> openPopup(addingCardPopup,
   nameCard.value = '',
-  linkImageCard.value = '',
-  formValidation(addingCardPopup)
+  linkImageCard.value = ''
 ))
 
 formProfile.addEventListener('submit', function(evt){
@@ -158,3 +156,6 @@ document.addEventListener('click', function(evt) {
     closePopup(elemTarget);
   };
 })
+
+formValidation(editProfilePopup);
+formValidation(addingCardPopup);

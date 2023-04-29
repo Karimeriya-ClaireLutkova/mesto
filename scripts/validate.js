@@ -1,25 +1,18 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  console.log(formElement, errorElement);
   inputElement.classList.add(enableValidation.inputErrorClass);
-  errorElement.textContent = errorMessage;
-  if (errorMessage.length > 70) {
-    increaseFormView (formElement);
-  };
-  errorElement.classList.add(enableValidation.errorClass);
+  errorElement.textContent = errorMessage + 'ffghhg jjhhjgjhfj jjj jklklhu fgdggj 990909097987';
+  increaseFormView (formElement);  
+  errorElement.classList.add(enableValidation.errorClass)
 };
 
 function increaseFormView (formElement) {
-const listFieldForm = formElement.querySelectorAll(enableValidation.fieldElementSelector);
-listFieldForm.forEach((elem) => {
-  elem.classList.add(enableValidation.fieldClass);
- });
-}
+  formElement.classList.add(enableValidation.fieldClass);
+ }
 
 function restoringSizeForm (formElement) {
-  const listFieldForm = formElement.querySelectorAll(enableValidation.fieldElementSelector);
-  listFieldForm.forEach((elem) => {
-    elem.classList.remove(enableValidation.fieldClass);
-  });
+  formElement.classList.remove(enableValidation.fieldClass);
 }
 
 const hideInputError = (formElement, inputElement) => {
@@ -52,9 +45,9 @@ const toggleButtonState = (inputList, buttonElement) => {
   }
 };
 
-const setEventListeners = (formElement) => {
+const setEventListeners = (formPopup, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(enableValidation.inputSelector));
-  const buttonElement = formElement.querySelector(enableValidation.submitButtonSelector);
+  const buttonElement = formPopup.querySelector(enableValidation.submitButtonSelector);
   toggleButtonState(inputList, buttonElement);
   inputList.forEach((inputElement) => {
     inputElement.addEventListener('input', function () {
@@ -65,16 +58,11 @@ const setEventListeners = (formElement) => {
 };
 
 const formValidation = (item) => {
-  const formList = Array.from(item.querySelectorAll(enableValidation.formSelector));
-  formList.forEach((formElement) => {
-    formElement.addEventListener('submit', (evt) => {
-      evt.preventDefault();
-    });
-    const fieldsetList = Array.from(formElement.querySelectorAll(enableValidation.fieldFormSelector));
-    fieldsetList.forEach((fieldSet) => {
-      setEventListeners(fieldSet);
-    });
-  })
+  const formPopup = item.querySelector(enableValidation.formSelector);
+  const fieldsetList = Array.from(formPopup.querySelectorAll(enableValidation.fieldElementSelector));
+  fieldsetList.forEach((fieldSet) => {
+    setEventListeners(formPopup, fieldSet);
+  });
 };
 
 const enableValidation = ({
@@ -84,7 +72,6 @@ const enableValidation = ({
   inactiveButtonClass: 'popup__button_inactive',
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__input-error_active',
-  fieldFormSelector: '.popup__form-info',
   fieldClass: 'popup__field_type_error',
   fieldElementSelector: '.popup__field'
 });
