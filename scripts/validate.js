@@ -8,29 +8,12 @@ const showInputError = (formElement, inputElement, errorMessage) => {
 
 function increaseFormView (formElement) {
   formElement.classList.add(enableValidation.fieldClass);
- }
+}
 
 function restoreSizeForm (formElement) {
   formElement.classList.remove(enableValidation.fieldClass);
 }
-
-function clearErrorFull (item) {
-  const formPopup = item.querySelector(enableValidation.formSelector);
-  const fieldsetList = formPopup.querySelectorAll(enableValidation.fieldElementSelector);
-  fieldsetList.forEach((fieldSet) => {
-    restoreSizeForm (fieldSet);
-  });
-  const inputList = formPopup.querySelectorAll(enableValidation.inputSelector);
-  inputList.forEach((inputElement) => {
-    inputElement.classList.remove(enableValidation.inputErrorClass);
-  });
-  const errorsList = formPopup.querySelectorAll(enableValidation.errorSelector);
-  errorsList.forEach((errorElement) => {
-    errorElement.classList.remove(enableValidation.errorClass);
-    errorElement.textContent = '';
-  });
-}
-
+ 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(enableValidation.inputErrorClass);
@@ -38,6 +21,15 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = '';
   restoreSizeForm(formElement)
 };
+
+function clearErrorFull (item) {
+  const formPopup = item.querySelector(enableValidation.formSelector);
+  const fieldsetList = Array.from(formPopup.querySelectorAll(enableValidation.fieldElementSelector));
+  fieldsetList.forEach((fieldSet) => {
+    const inputElement = fieldSet.querySelector(enableValidation.inputSelector);
+    hideInputError(fieldSet, inputElement);
+  });
+}
 
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
