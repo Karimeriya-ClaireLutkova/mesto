@@ -13,7 +13,7 @@ function increaseFormView (formElement) {
 function restoreSizeForm (formElement) {
   formElement.classList.remove(enableValidation.fieldClass);
 }
- 
+
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(enableValidation.inputErrorClass);

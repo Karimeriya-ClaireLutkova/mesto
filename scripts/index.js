@@ -65,12 +65,14 @@ function showCardPrimary(item, sectionCardsPage) {
 
 function openPopup(item) {
   item.classList.add('popup_opened');
+  item.addEventListener('click', closePopupClick);
   document.addEventListener('keydown', closePopupKeydown);
 }
 
 function closePopup(item) {
   item.classList.remove('popup_opened');
   document.removeEventListener('keydown', closePopupKeydown);
+  item.removeEventListener('click', closePopupClick)
 }
 
 function openPopupImage (name, link, title) {
@@ -87,31 +89,24 @@ function closePopupKeydown (evt) {
   };
 }
 
-function clearErrorsFormKeydown (evt) {
-  if(evt.key === 'Escape') {
-    const activePopup = document.querySelector('.popup_opened');
-    clearErrorFull(activePopup);
-    activePopup.removeEventListener('keydown', clearErrorsFormKeydown);
+function closePopupClick (evt) {
+  if(evt.target.classList.contains('popup')) {
+    const elemTarget = evt.target;
+    closePopup(elemTarget);
   };
 }
 
-function clearErrorsFormButton (evt) {
-  if(evt.target.classList.contains('popup__button_close')) {
-    const elemTarget = evt.target;
-    const elemView = elemTarget.closest('.popup');
-    clearErrorFull(elemView);
-  }
-};
-
 buttonOpenPopupProfile.addEventListener('click', ()=> openPopup(popupProfile,
   nameInput.value = profileName.textContent,
-  jobInput.value = profileJob.textContent
-))
+  jobInput.value = profileJob.textContent,
+  clearErrorFull(popupProfile))
+)
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
   nameCard.value = '',
-  linkImageCard.value = ''
-))
+  linkImageCard.value = '',
+  clearErrorFull(popupCardNew))  
+)
 
 formProfile.addEventListener('submit', function(evt) {
     evt.preventDefault();
@@ -136,32 +131,6 @@ buttonsClosePopup.forEach(canselItem => {
     closePopup(elemCancel);
   });
 })
-
-document.addEventListener('click', function(evt) {
-  if(evt.target.classList.contains('popup')) {
-    const elemTarget = evt.target;
-    closePopup(elemTarget);
-  };
-})
-
-document.addEventListener('click', function(evt) {
-  if(evt.target.classList.contains('popup_type_card-new')) {
-    const elemTarget = evt.target;
-    clearErrorFull(elemTarget);
-  };
-})
-
-document.addEventListener('click', function(evt) {
-  if(evt.target.classList.contains('popup_type_profile-info')) {
-    const elemTarget = evt.target;
-    clearErrorFull(elemTarget);
-  };
-})
-
-popupProfile.addEventListener('click', clearErrorsFormButton);
-popupProfile.addEventListener('keydown', clearErrorsFormKeydown);
-popupCardNew.addEventListener('click', clearErrorsFormButton);
-popupCardNew.addEventListener('keydown', clearErrorsFormKeydown);
 
 runValidation(popupProfile);
 runValidation(popupCardNew);
