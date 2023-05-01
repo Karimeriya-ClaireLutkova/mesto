@@ -99,13 +99,15 @@ function closePopupClick (evt) {
 buttonOpenPopupProfile.addEventListener('click', ()=> openPopup(popupProfile,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent,
-  clearErrorFull(popupProfile))
+  clearErrorFull(popupProfile)),
+  enableButtonSubmit(popupProfile)
 )
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
   nameCard.value = '',
   linkImageCard.value = '',
-  clearErrorFull(popupCardNew)
+  clearErrorFull(popupCardNew),
+  disableButtonSubmit(popupCardNew)
 ))
 
 formProfile.addEventListener('submit', function(evt) {

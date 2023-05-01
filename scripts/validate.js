@@ -34,7 +34,15 @@ function clearErrorFull (item) {
 function disableButtonSubmit (item) {
   const formPopup = item.querySelector(enableValidation.formSelector);
   const buttonElement = formPopup.querySelector(enableValidation.submitButtonSelector);
+  buttonElement.classList.add(enableValidation.inactiveButtonClass);
   buttonElement.setAttribute('disabled', true);
+}
+
+function enableButtonSubmit (item) {
+  const formPopup = item.querySelector(enableValidation.formSelector);
+  const buttonElement = formPopup.querySelector(enableValidation.submitButtonSelector);
+  buttonElement.classList.remove(enableValidation.inactiveButtonClass);
+  buttonElement.removeAttribute('disabled');
 }
 
 const isValid = (formElement, inputElement) => {
@@ -91,4 +99,5 @@ const enableValidation = ({
   fieldSelector: '.popup__field',
   errorSelector: '.popup__input-error'
 });
+
 runValidation(enableValidation);
