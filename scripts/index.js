@@ -99,8 +99,8 @@ function closePopupClick (evt) {
 buttonOpenPopupProfile.addEventListener('click', ()=> openPopup(popupProfile,
   nameInput.value = profileName.textContent,
   jobInput.value = profileJob.textContent,
-  clearErrorFull(popupProfile)),
-  enableButtonSubmit(popupProfile)
+  clearErrorFull(popupProfile),
+  enableButtonSubmit(popupProfile))
 )
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
