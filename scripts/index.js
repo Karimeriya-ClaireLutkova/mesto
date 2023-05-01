@@ -105,8 +105,8 @@ buttonOpenPopupProfile.addEventListener('click', ()=> openPopup(popupProfile,
 buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
   nameCard.value = '',
   linkImageCard.value = '',
-  clearErrorFull(popupCardNew))  
-)
+  clearErrorFull(popupCardNew)
+))
 
 formProfile.addEventListener('submit', function(evt) {
     evt.preventDefault();
@@ -121,7 +121,7 @@ formCardNew.addEventListener('submit', function(evt) {
   const link = linkImageCard.value;
   const title = nameCard.value;
   showCardPrimary ({name, link, title}, sectionCardsPage);
-  closePopup(popupCardNew)
+  closePopup(popupCardNew);
 })
 
 buttonsClosePopup.forEach(canselItem => {
@@ -131,6 +131,3 @@ buttonsClosePopup.forEach(canselItem => {
     closePopup(elemCancel);
   });
 })
-
-runValidation(popupProfile);
-runValidation(popupCardNew);
