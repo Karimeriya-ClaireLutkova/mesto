@@ -1,8 +1,9 @@
 const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(enableValidation.inputErrorClass);
+  const fieldElement = inputElement.parentElement;
   errorElement.textContent = errorMessage;
-  increaseFormView (formElement);
+  increaseFormView(fieldElement);
   errorElement.classList.add(enableValidation.errorClass)
 };
 
@@ -16,10 +17,11 @@ function restoreSizeForm (formElement) {
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
+  const fieldElement = inputElement.parentElement;
   inputElement.classList.remove(enableValidation.inputErrorClass);
   errorElement.classList.remove(enableValidation.errorClass);
   errorElement.textContent = '';
-  restoreSizeForm(formElement)
+  restoreSizeForm(fieldElement)
 };
 
 function clearErrorFull (item) {
