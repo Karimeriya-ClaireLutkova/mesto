@@ -4,12 +4,12 @@ const profileName = document.querySelector('.profile__name');
 const profileJob = document.querySelector('.profile__profession');
 
 const popupProfile = document.querySelector('.popup_type_profile-info');
-const formProfile = document.querySelector("[name='profile']");
+const formProfile = popupProfile.querySelector('.popup__form_type_profile');
 const nameInput = formProfile.querySelector('.popup__input_type_name');
 const jobInput = formProfile.querySelector('.popup__input_type_profession');
 
 const popupCardNew = document.querySelector('.popup_type_card-new');
-const formCardNew = document.querySelector("[name='new-card']");
+const formCardNew = popupCardNew.querySelector('.popup__form_type_new-card');
 const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
 const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
 
@@ -135,16 +135,16 @@ function closePopupClick (evt) {
 
 buttonOpenPopupProfile.addEventListener('click', ()=> openPopup(popupProfile,
   nameInput.value = profileName.textContent,
-  jobInput.value = profileJob.textContent,
-  clearErrorFull(popupProfile),
-  enableButtonSubmit(popupProfile))
+  jobInput.value = profileJob.textContent)
+  /*clearErrorFull(popupProfile),
+  enableButtonSubmit(popupProfile))*/
 )
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> openPopup(popupCardNew,
   nameCard.value = '',
-  linkImageCard.value = '',
-  clearErrorFull(popupCardNew),
-  disableButtonSubmit(popupCardNew)
+  linkImageCard.value = ''
+  /*clearErrorFull(popupCardNew),
+  disableButtonSubmit(popupCardNew)*/
 ))
 
 formProfile.addEventListener('submit', function(evt) {
