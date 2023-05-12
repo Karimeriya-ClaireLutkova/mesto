@@ -20,7 +20,7 @@ const imageViewSubtitle = formViewCard.querySelector('.popup__subtitle');
 
 const listPopups = document.querySelectorAll('.popup');
 const sectionCardsPage = document.querySelector('.elements');
-const cardTemplate = document.querySelector('#card').content;
+const cardTemplate = document.querySelector('.card-template').content;
 const cardElementTemplate = cardTemplate.querySelector('.element');
 const fieldList = document.querySelectorAll('.popup__field');
 const errorElements = document.querySelectorAll('.popup__input-error');
@@ -48,17 +48,55 @@ function createCard ({name, link, title}) {
   imageCard.addEventListener('click', () => openPopupImage(name, link));
   return templateCard;
 }
+/*
+class Card {
+  constructor(data) {
+    this._name = data.name;
+    this._link = data.link;
+    this._title = data.title;
+  }
+
+  _getTemplate() {
+    const cardElement = document
+    .querySelector('.card-template')
+    .content
+    .querySelector('.element')
+    .cloneNode(true);
+
+    return cardElement;
+  }
+
+  generateCard() {
+    this._element = this._getTemplate();
+    this._element.querySelector('element__title').textContent = this._name;
+    this._element.querySelector('.element__image').src = this._link;
+    this._element.querySelector('.element__image').alt = this._title;
+
+    return this._element;
+  }
+}
 
 function showCardNew(item, sectionCardsPage) {
+  const templateCard = new Card(item);
+  sectionCardsPage.prepend(templateCard);
+}
+
+function showCardPrimary(item, sectionCardsPage) {
+  const templateCard = new Card(item);
+  sectionCardsPage.append(templateCard);
+}
+*/
+
+function showCardPrimary(item, sectionCardsPage) {
   const templateCard = createCard(item);
   sectionCardsPage.append(templateCard);
 }
 
 initialCards.forEach((item) => {
-  showCardNew(item, sectionCardsPage)
+  showCardPrimary(item, sectionCardsPage)
 })
 
-function showCardPrimary(item, sectionCardsPage) {
+function showCardNew(item, sectionCardsPage) {
   const templateCard = createCard(item);
   sectionCardsPage.prepend(templateCard);
 }
@@ -122,7 +160,7 @@ formCardNew.addEventListener('submit', function(evt) {
   const name = nameCard.value;
   const link = linkImageCard.value;
   const title = nameCard.value;
-  showCardPrimary ({name, link, title}, sectionCardsPage);
+  showCardNew ({name, link, title}, sectionCardsPage);
   closePopup(popupCardNew);
 })
 
