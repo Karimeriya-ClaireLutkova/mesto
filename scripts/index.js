@@ -45,7 +45,7 @@ function createCard ({name, link, title}) {
     const elemTarget = evt.target;
     elemTarget.classList.toggle('element__button_like_active');
   });
-  imageCard.addEventListener('click', () => openPopupImage(name, link));
+  imageCard.addEventListener('click', () => openPopupImage(name, link, title));
   return templateCard;
 }
 /*
@@ -74,16 +74,34 @@ class Card {
 
     return this._element;
   }
+
+  _setEventListeners() {
+    this._element.querySelector('.element__image').addEventListener('click', () => {
+      openPopupImage(this._name, this._link, this._title);
+    });
+    this._element.querySelector('.element__button_like').addEventListener('click', () => {
+
+    });
+    this._element.querySelector('.element__button_delete').addEventListener('click', () => {
+      _deleteCard();
+    });
+  }
+
+  _deleteCard() {
+    this._element.remove();
+  }
 }
 
 function showCardNew(item, sectionCardsPage) {
   const templateCard = new Card(item);
-  sectionCardsPage.prepend(templateCard);
+  const cardElement = templateCard.generateCard();
+  sectionCardsPage.prepend(cardElement);
 }
 
 function showCardPrimary(item, sectionCardsPage) {
   const templateCard = new Card(item);
-  sectionCardsPage.append(templateCard);
+  const cardElement = templateCard.generateCard();
+  sectionCardsPage.append(cardElement);
 }
 */
 
