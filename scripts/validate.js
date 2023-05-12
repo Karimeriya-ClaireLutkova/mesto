@@ -186,27 +186,22 @@ class FormValidator {
     }
   };
 
-  clearErrorFull (item) {
-    const formPopup = item.querySelector(this._formSelector);
-    const fieldsetList = Array.from(formPopup.querySelectorAll(this._fieldSelector));
+  clearErrorFull () {
+    const fieldsetList = Array.from(this._formElement.querySelectorAll(this._fieldSelector));
     fieldsetList.forEach((fieldSet) => {
       const inputElement = fieldSet.querySelector(this._inputSelector);
-      this._hideInputError(fieldSet, inputElement);
+      this._hideInputError(inputElement);
     });
   }
   
-  disableButtonSubmit (item) {
-    const formPopup = item.querySelector(this._formSelector);
-    const buttonElement = formPopup.querySelector(this._submitButtonSelector);
-    buttonElement.classList.add(this._inactiveButtonClass);
-    buttonElement.setAttribute('disabled', true);
+  disableButtonSubmit () {
+    this._buttonElement.classList.add(this._inactiveButtonClass);
+    this._buttonElement.setAttribute('disabled', true);
   }
   
-  enableButtonSubmit (item) {
-    const formPopup = item.querySelector(this._formSelector);
-    const buttonElement = formPopup.querySelector(this._submitButtonSelector);
-    buttonElement.classList.remove(this._inactiveButtonClass);
-    buttonElement.removeAttribute('disabled');
+  enableButtonSubmit () {
+    this._buttonElement.classList.remove(this._inactiveButtonClass);
+    this._buttonElement.removeAttribute('disabled');
   }
 }
 
