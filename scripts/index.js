@@ -20,40 +20,15 @@ const imageViewSubtitle = formViewCard.querySelector('.popup__subtitle');
 
 const listPopups = document.querySelectorAll('.popup');
 const sectionCardsPage = document.querySelector('.elements');
-const cardTemplate = document.querySelector('.card-template').content;
-const cardElementTemplate = cardTemplate.querySelector('.element');
 const fieldList = document.querySelectorAll('.popup__field');
 const errorElements = document.querySelectorAll('.popup__input-error');
 const listInputs = document.querySelectorAll('.popup__input');
 const buttonsClosePopup = document.querySelectorAll('.popup__button_close');
-
-function createCard ({name, link, title}) {
-  const templateCard = cardElementTemplate.cloneNode(true);
-  const imageCard = templateCard.querySelector('.element__image');
-  const titleCard = templateCard.querySelector('.element__title');
-  titleCard.textContent = name;
-  imageCard.src = link;
-  imageCard.alt = title;
-  const buttonDeleteCard = templateCard.querySelector('.element__button_delete');
-  buttonDeleteCard.addEventListener('click', function(evt) {
-    const elemTarget = evt.target;
-    const elemDel = elemTarget.closest('.element');
-    elemDel.remove();
-    });
-  const buttonLikeCard = templateCard.querySelector('.element__button_like');
-  buttonLikeCard.addEventListener('click', function(evt) {
-    const elemTarget = evt.target;
-    elemTarget.classList.toggle('element__button_like_active');
-  });
-  imageCard.addEventListener('click', () => openPopupImage(name, link, title));
-  return templateCard;
-}
-/*
 class Card {
-  constructor(data) {
-    this._name = data.name;
-    this._link = data.link;
-    this._title = data.title;
+  constructor(item) {
+    this._name = item.name;
+    this._link = item.link;
+    this._title = item.title;
   }
 
   _getTemplate() {
@@ -68,27 +43,44 @@ class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._element.querySelector('element__title').textContent = this._name;
-    this._element.querySelector('.element__image').src = this._link;
-    this._element.querySelector('.element__image').alt = this._title;
+    this._buttonDeleteCard = this._element.querySelector('.element__button_delete');
+    this._buttonLikeCard = this._element.querySelector('.element__button_like');
+    this._imageCard = this._element.querySelector('.element__image');
+    this._titleCard = this._element.querySelector('.element__title');
+    this._setEventListeners();
+
+    this._titleCard.textContent = this._name;
+    this._imageCard.src = this._link;
+    this._imageCard.alt = this._title;
 
     return this._element;
   }
 
-  _setEventListeners() {
-    this._element.querySelector('.element__image').addEventListener('click', () => {
-      openPopupImage(this._name, this._link, this._title);
-    });
-    this._element.querySelector('.element__button_like').addEventListener('click', () => {
+  _openPopupImage() {
+    imageViewCard.src = this._link;
+    imageViewCard.alt = this._title;
+    imageViewSubtitle.textContent = this._name;
+    openPopup(popupViewCard);
+  }
 
-    });
-    this._element.querySelector('.element__button_delete').addEventListener('click', () => {
-      _deleteCard();
-    });
+  _likeCard() {
+    this._buttonLikeCard.classList.toggle('element__button_like_active');
   }
 
   _deleteCard() {
     this._element.remove();
+  }
+
+  _setEventListeners() {
+    this._imageCard.addEventListener('click', () => {
+      this._openPopupImage();
+    });
+    this._buttonLikeCard.addEventListener('click', () => {
+      this._likeCard();
+    });
+    this._buttonDeleteCard.addEventListener('click', () => {
+      this._deleteCard();
+    });
   }
 }
 
@@ -103,21 +95,10 @@ function showCardPrimary(item, sectionCardsPage) {
   const cardElement = templateCard.generateCard();
   sectionCardsPage.append(cardElement);
 }
-*/
-
-function showCardPrimary(item, sectionCardsPage) {
-  const templateCard = createCard(item);
-  sectionCardsPage.append(templateCard);
-}
 
 initialCards.forEach((item) => {
-  showCardPrimary(item, sectionCardsPage)
+  showCardPrimary(item, sectionCardsPage);
 })
-
-function showCardNew(item, sectionCardsPage) {
-  const templateCard = createCard(item);
-  sectionCardsPage.prepend(templateCard);
-}
 
 function openPopup(item) {
   item.classList.add('popup_opened');
