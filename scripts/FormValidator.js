@@ -13,6 +13,7 @@ class FormValidator {
     this._errorSelector = listValidation.errorSelector;
     this._inputList = Array.from(this._formElement.querySelectorAll(this._inputSelector));
     this._buttonElement = this._formElement.querySelector(this._submitButtonSelector);
+    this._fieldsetList = Array.from(this._formElement.querySelectorAll(this._fieldSelector));
   }
 
   enableValidation() {
@@ -80,8 +81,7 @@ class FormValidator {
   }
 
   clearErrorFull () {
-    const fieldsetList = Array.from(this._formElement.querySelectorAll(this._fieldSelector));
-    fieldsetList.forEach((fieldSet) => {
+    this._fieldsetList.forEach((fieldSet) => {
       const inputElement = fieldSet.querySelector(this._inputSelector);
       this._hideInputError(inputElement);
     });
