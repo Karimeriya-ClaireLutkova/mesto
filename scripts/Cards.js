@@ -1,10 +1,9 @@
-import {imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
-import { openPopup } from './index.js';
 export default class Card {
-  constructor(item) {
+  constructor(item, handleCardClick) {
     this._name = item.name;
     this._link = item.link;
     this._title = item.title;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -32,13 +31,6 @@ export default class Card {
     return this._element;
   }
 
-  _openPopupImage() {
-    imageViewCard.src = this._link;
-    imageViewCard.alt = this._title;
-    imageViewSubtitle.textContent = this._name;
-    openPopup(popupViewCard);
-  }
-
   _likeCard() {
     this._buttonLikeCard.classList.toggle('element__button_like_active');
   }
@@ -49,7 +41,7 @@ export default class Card {
 
   _setEventListeners() {
     this._imageCard.addEventListener('click', () => {
-      this._openPopupImage();
+      this._handleCardClick(this._link, this._title, this._name);
     });
     this._buttonLikeCard.addEventListener('click', () => {
       this._likeCard();

@@ -2,25 +2,34 @@ import Card from './cards.js';
 import { validationPopupCardNew } from './FormValidator.js';
 import { validationPopupProfile } from './FormValidator.js';
 import {initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
-nameCard, linkImageCard, sectionCardsPage, buttonsClosePopup} from './constants.js';
+nameCard, linkImageCard, sectionCardsPage, buttonsClosePopup, imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
 
-function showCardNew(item, sectionCardsPage) {
-  const templateCard = new Card(item);
+function createCard(item) {
+  const templateCard = new Card(item, handleCardClick);
   const cardElement = templateCard.generateCard();
-  sectionCardsPage.prepend(cardElement);
+  return cardElement;
 }
 
-function showCardPrimary(item, sectionCardsPage) {
-  const templateCard = new Card(item);
-  const cardElement = templateCard.generateCard();
-  sectionCardsPage.append(cardElement);
+function showCardNew(item) {
+  sectionCardsPage.prepend(createCard(item));
+}
+
+function showCardPrimary(item) {
+  sectionCardsPage.append(createCard(item));
 }
 
 initialCards.forEach((item) => {
-  showCardPrimary(item, sectionCardsPage);
+  showCardPrimary(item);
 })
 
-export function openPopup(item) {
+function handleCardClick (link, title, name) {
+  imageViewCard.src = link;
+  imageViewCard.alt = title;
+  imageViewSubtitle.textContent = name;
+  openPopup(popupViewCard);
+}
+
+function openPopup(item) {
   item.classList.add('popup_opened');
   item.addEventListener('click', closePopupClick);
   document.addEventListener('keydown', closePopupKeydown);
@@ -72,7 +81,7 @@ formCardNew.addEventListener('submit', function(evt) {
   const name = nameCard.value;
   const link = linkImageCard.value;
   const title = nameCard.value;
-  showCardNew ({name, link, title}, sectionCardsPage);
+  showCardNew ({name, link, title});
   closePopup(popupCardNew);
 })
 
