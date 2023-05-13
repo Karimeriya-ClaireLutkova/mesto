@@ -1,3 +1,4 @@
+import {formProfile, formCardNew} from './constants.js';
 class FormValidator {
   constructor(listValidation, formElement) {
     this._formElement = formElement;
@@ -38,10 +39,8 @@ class FormValidator {
 
   _showInputError(inputElement, errorMessage) {
     const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
-    console.log(inputElement);
     inputElement.classList.add(this._inputErrorClass);
     const fieldElement = inputElement.parentElement;
-    console.log(fieldElement);
     errorElement.textContent = errorMessage;
     this._increaseFormView(fieldElement);
     errorElement.classList.add(this._errorClass)
@@ -59,7 +58,7 @@ class FormValidator {
   _increaseFormView (fieldElement) {
     fieldElement.classList.add(this._fieldClass);
   }
-  
+
   _restoreSizeForm (fieldElement) {
     fieldElement.classList.remove(this._fieldClass);
   }
@@ -68,7 +67,7 @@ class FormValidator {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     })
-  };
+  }
 
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
@@ -78,7 +77,7 @@ class FormValidator {
       this._buttonElement.classList.remove(this._inactiveButtonClass);
       this._buttonElement.removeAttribute('disabled');
     }
-  };
+  }
 
   clearErrorFull () {
     const fieldsetList = Array.from(this._formElement.querySelectorAll(this._fieldSelector));
@@ -87,12 +86,12 @@ class FormValidator {
       this._hideInputError(inputElement);
     });
   }
-  
+
   disableButtonSubmit () {
     this._buttonElement.classList.add(this._inactiveButtonClass);
     this._buttonElement.setAttribute('disabled', true);
   }
-  
+
   enableButtonSubmit () {
     this._buttonElement.classList.remove(this._inactiveButtonClass);
     this._buttonElement.removeAttribute('disabled');
@@ -111,9 +110,7 @@ const listValidation = ({
   errorSelector: '.popup__input-error'
 });
 
-const formPopupProfile = document.querySelector('.popup__form_type_profile');
-export const validationPopupProfile = new FormValidator(listValidation, formPopupProfile);
+export const validationPopupProfile = new FormValidator(listValidation, formProfile);
 validationPopupProfile.enableValidation();
-const formPopupCardNew = document.querySelector('.popup__form_type_new-card');
-export const validationPopupCardNew = new FormValidator(listValidation, formPopupCardNew);
+export const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 validationPopupCardNew.enableValidation();

@@ -2,7 +2,7 @@ import Card from './cards.js';
 import { validationPopupCardNew } from './FormValidator.js';
 import { validationPopupProfile } from './FormValidator.js';
 import {initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
-nameCard, linkImageCard, popupViewCard, imageViewSubtitle, sectionCardsPage, buttonsClosePopup} from './constants.js';
+nameCard, linkImageCard, sectionCardsPage, buttonsClosePopup} from './constants.js';
 
 function showCardNew(item, sectionCardsPage) {
   const templateCard = new Card(item);
