@@ -1,5 +1,4 @@
-import {formProfile, formCardNew} from './constants.js';
-class FormValidator {
+export default class FormValidator {
   constructor(listValidation, formElement) {
     this._formElement = formElement;
     this._formSelector = listValidation.formSelector;
@@ -97,20 +96,3 @@ class FormValidator {
     this._buttonElement.removeAttribute('disabled');
   }
 }
-
-const listValidation = ({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_inactive',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__input-error_active',
-  fieldClass: 'popup__field_type_error',
-  fieldSelector: '.popup__field',
-  errorSelector: '.popup__input-error'
-});
-
-export const validationPopupProfile = new FormValidator(listValidation, formProfile);
-validationPopupProfile.enableValidation();
-export const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
-validationPopupCardNew.enableValidation();

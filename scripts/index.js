@@ -1,11 +1,13 @@
 import Card from './cards.js';
-import { validationPopupCardNew } from './FormValidator.js';
-import { validationPopupProfile } from './FormValidator.js';
-import {initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
+import FormValidator from './FormValidator.js';
+import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
 nameCard, linkImageCard, sectionCardsPage, buttonsClosePopup, imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
 
+const validationPopupProfile = new FormValidator(listValidation, formProfile);
+const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
+
 function createCard(item) {
-  const templateCard = new Card(item, handleCardClick);
+  const templateCard = new Card(item, '.card-template', handleCardClick);
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
@@ -92,3 +94,6 @@ buttonsClosePopup.forEach(canselItem => {
     closePopup(elemCancel);
   });
 })
+
+validationPopupProfile.enableValidation();
+validationPopupCardNew.enableValidation();
