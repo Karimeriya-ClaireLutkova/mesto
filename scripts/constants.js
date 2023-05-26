@@ -2,32 +2,38 @@ export const initialCards = [
   {
     name: 'Карачаевск',
     link: './images/Карачаевск.jpg',
-    title: 'Церковь в Карачаевске'
+    title: 'Церковь в Карачаевске',
+    isCardPrimery: true
   },
   {
     name: 'Гора Эльбрус',
     link: './images/Гора_Эльбрус.jpg',
-    title: 'Степи у Эльбруса'
+    title: 'Степи у Эльбруса',
+    isCardPrimery: true
   },
   {
     name: 'Домбай',
     link: './images/Домбай.jpg',
-    title: 'Лес на горной территории Домбая'
+    title: 'Лес на горной территории Домбая',
+    isCardPrimery: true
   },
   {
     name: 'Гора Эльбрус',
     link: './images/Гора_Эльбрус.jpg',
-    title: 'Степи у Эльбруса'
+    title: 'Степи у Эльбруса',
+    isCardPrimery: true
   },
   {
     name: 'Домбай',
     link: './images/Домбай.jpg',
-    title: 'Лес на горной территории Домбая'
+    title: 'Лес на горной территории Домбая',
+    isCardPrimery: true
   },
   {
     name: 'Карачаево-Черкесcия',
     link: './images/Карачаевск.jpg',
-    title: 'Церковь в Карачаевске'
+    title: 'Церковь в Карачаевске',
+    isCardPrimery: true
   }
 ];
 
@@ -51,7 +57,6 @@ export const formViewCard = document.querySelector('.popup__container_type_image
 export const imageViewCard = formViewCard.querySelector('.popup__image');
 export const imageViewSubtitle = formViewCard.querySelector('.popup__subtitle');
 
-export const sectionCardsPage = document.querySelector('.elements');
 export const buttonsClosePopup = document.querySelectorAll('.popup__button_close');
 
 export const listValidation = ({

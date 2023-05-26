@@ -1,10 +1,12 @@
-import Card from './cards.js';
+import Card from './Cards.js';
+import Section from './section.js';
 import FormValidator from './FormValidator.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
-nameCard, linkImageCard, sectionCardsPage, buttonsClosePopup, imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
+nameCard, linkImageCard, buttonsClosePopup, imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
+const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
 
 function createCard(item) {
   const templateCard = new Card(item, '.card-template', handleCardClick);
@@ -16,13 +18,14 @@ function showCardNew(item) {
   sectionCardsPage.prepend(createCard(item));
 }
 
-function showCardPrimary(item) {
+/*function showCardPrimary(item) {
   sectionCardsPage.append(createCard(item));
 }
 
 initialCards.forEach((item) => {
   showCardPrimary(item);
 })
+*/
 
 function handleCardClick (link, title, name) {
   imageViewCard.src = link;
@@ -97,3 +100,4 @@ buttonsClosePopup.forEach(canselItem => {
 
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
+cardPrimery.renderItems();
