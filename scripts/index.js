@@ -86,7 +86,8 @@ formCardNew.addEventListener('submit', function(evt) {
   const name = nameCard.value;
   const link = linkImageCard.value;
   const title = nameCard.value;
-  showCardNew ({name, link, title});
+  const cardNew = new Section({items: [{name, link, title}], renderer: createCard}, '.elements');
+  cardNew.renderItems();
   closePopup(popupCardNew);
 })
 

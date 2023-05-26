@@ -5,14 +5,21 @@ export default class Section {
     this._container = document.querySelector(selector);
   }
 
-  addItem(item) {
-    this._container.append(item);
-  }
-
   renderItems() {
     this._initialArray.forEach((item) => {
+      const sequenceDeterminant = item.isCardPrimery;
       const cardElement = this._renderer(item);
-      this.addItem(cardElement);
+      this.addItem(cardElement, sequenceDeterminant);
     })
-  } 
+  }
+  
+  addItem(item, sequenceDeterminant) {
+    if (sequenceDeterminant === true) {
+      console.log(sequenceDeterminant);
+      this._container.append(item);
+    } else {
+      this._container.prepend(item);
+      console.log(sequenceDeterminant);
+    }
+  }
 }
