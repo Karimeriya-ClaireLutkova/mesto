@@ -1,5 +1,5 @@
 import Card from './Cards.js';
-import Section from './section.js';
+import Section from './Section.js';
 import FormValidator from './FormValidator.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, popupProfile, formProfile, nameInput, jobInput, popupCardNew , formCardNew,
 nameCard, linkImageCard, buttonsClosePopup, imageViewCard, imageViewSubtitle, popupViewCard} from './constants.js';
