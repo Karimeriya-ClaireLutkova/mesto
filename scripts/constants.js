@@ -52,13 +52,6 @@ export const formCardNew = popupCardNew.querySelector('.popup__form_type_new-car
 export const nameCard = formCardNew.querySelector('.popup__input_type_place-name');
 export const linkImageCard = formCardNew.querySelector('.popup__input_type_link');
 
-export const popupViewCard = document.querySelector('.popup_type_image-view');
-export const formViewCard = document.querySelector('.popup__container_type_image');
-export const imageViewCard = formViewCard.querySelector('.popup__image');
-export const imageViewSubtitle = formViewCard.querySelector('.popup__subtitle');
-
-export const buttonsClosePopup = document.querySelectorAll('.popup__button_close');
-
 export const listValidation = ({
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
