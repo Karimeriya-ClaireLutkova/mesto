@@ -33,8 +33,8 @@ initialCards.forEach((item) => {
 })
 */
 
-function handleCardClick () {
-  popupViewCard.openPopup();
+function handleCardClick (link, title, name) {
+  popupViewCard.openPopup(link, title, name);
 }
 
 /*function openPopup(item) {

@@ -42,7 +42,7 @@ export default class Card {
 
   _setEventListeners() {
     this._imageCard.addEventListener('click', () => {
-      this._handleCardClick();
+      this._handleCardClick(this._link, this._title, this._name);
     });
     this._buttonLikeCard.addEventListener('click', () => {
       this._likeCard();
