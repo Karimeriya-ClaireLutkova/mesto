@@ -1,8 +1,8 @@
 export default class Section {
-  constructor({items, renderer}, selector) {
+  constructor({items, renderer}, selectorContainer) {
     this._initialArray = items;
     this._renderer = renderer;
-    this._container = document.querySelector(selector);
+    this._container = document.querySelector(selectorContainer);
   }
 
   renderItems() {
@@ -15,11 +15,9 @@ export default class Section {
   
   addItem(item, sequenceDeterminant) {
     if (sequenceDeterminant === true) {
-      console.log(sequenceDeterminant);
       this._container.append(item);
     } else {
       this._container.prepend(item);
-      console.log(sequenceDeterminant);
     }
   }
 }
