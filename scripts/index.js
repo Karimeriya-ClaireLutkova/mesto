@@ -1,7 +1,7 @@
 import Card from './Cards.js';
 import Section from './Section.js';
 import FormValidator from './FormValidator.js';
-import Popup from './Popup.js';
+import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, formProfile, nameInput, jobInput, formCardNew,
 nameCard, linkImageCard} from './constants.js';
@@ -9,8 +9,15 @@ nameCard, linkImageCard} from './constants.js';
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
-const popupProfile = new Popup('.popup_type_profile-info');
-const popupCardNew = new Popup('.popup_type_card-new');
+const popupProfile = new PopupWithForm({selectorPopup:'.popup_type_profile-info', handleFormSubmit:(formData) =>{
+  profileName.textContent = formData;}});
+const popupCardNew = new PopupWithForm({selectorPopup:'.popup_type_card-new', handleFormSubmit:(formData) =>{
+  const name = nameCard.value;
+  const link = linkImageCard.value;
+  const title = nameCard.value;
+  const cardNew = new Section({items: [{name, link, title}], renderer: createCard}, '.elements');
+  cardNew.renderItems();
+  popupCardNew.closePopup();}});
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
 
 function createCard(item) {
@@ -65,16 +72,18 @@ function closePopupClick (evt) {
 
 buttonOpenPopupProfile.addEventListener('click', ()=> 
   popupProfile.openPopup(),
-  validationPopupProfile.clearErrorFull(),
-  validationPopupProfile.enableButtonSubmit()
+
+ 
 )
+/*validationPopupProfile.clearErrorFull()
+validationPopupProfile.enableButtonSubmit()*/
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> 
   popupCardNew.openPopup(),
   validationPopupCardNew.clearErrorFull(),
   validationPopupCardNew.disableButtonSubmit()
 )
-
+/*
 formProfile.addEventListener('submit', function(evt) {
     evt.preventDefault();
     profileName.textContent = nameInput.value;
