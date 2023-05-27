@@ -65,16 +65,14 @@ function closePopupClick (evt) {
   };
 }*/
 
-buttonOpenPopupProfile.addEventListener('click', ()=> popupProfile.openPopup(),
-  nameInput.value = profileName.textContent,
-  jobInput.value = profileJob.textContent,
+buttonOpenPopupProfile.addEventListener('click', ()=> 
+  popupProfile.openPopup(),
   validationPopupProfile.clearErrorFull(),
   validationPopupProfile.enableButtonSubmit()
 )
 
-buttonOpenPopupCardNew.addEventListener('click', ()=> popupCardNew.openPopup(),
-  nameCard.value = '',
-  linkImageCard.value = '',
+buttonOpenPopupCardNew.addEventListener('click', ()=> 
+  popupCardNew.openPopup(),
   validationPopupCardNew.clearErrorFull(),
   validationPopupCardNew.disableButtonSubmit()
 )
@@ -107,3 +105,6 @@ buttonsClosePopup.forEach(canselItem => {
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
 cardPrimery.renderItems();
+popupViewCard.setEventListeners();
+popupProfile.setEventListeners();
+popupCardNew.setEventListeners();
