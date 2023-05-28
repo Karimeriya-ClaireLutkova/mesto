@@ -5,19 +5,25 @@ import PopupWithForm from './PopupWithForm.js';
 import PopupWithImage from './PopupWithImage.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, profileName, profileJob, formProfile, nameInput, jobInput, formCardNew,
 nameCard, linkImageCard} from './constants.js';
+import UserInfo from './UserInfo.js';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
-const popupProfile = new PopupWithForm({selectorPopup:'.popup_type_profile-info', handleFormSubmit:(formData) =>{
-  profileName.textContent = formData;}});
-const popupCardNew = new PopupWithForm({selectorPopup:'.popup_type_card-new', handleFormSubmit:(formData) =>{
+const userProfile = new UserInfo('.profile__name','.profile__profession');
+const popupProfile = new PopupWithForm({
+  selectorPopup:'.popup_type_profile-info', 
+  handleFormSubmit:(formData) => {
+    userProfile.setUserInfo(formData);
+  }
+});
+/*const popupCardNew = new PopupWithForm({selectorPopup:'.popup_type_card-new', handleFormSubmit:(formData) =>{
   const name = nameCard.value;
   const link = linkImageCard.value;
   const title = nameCard.value;
   const cardNew = new Section({items: [{name, link, title}], renderer: createCard}, '.elements');
   cardNew.renderItems();
-  popupCardNew.closePopup();}});
+  popupCardNew.closePopup();}});*/
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
 
 function createCard(item) {
@@ -72,8 +78,7 @@ function closePopupClick (evt) {
 
 buttonOpenPopupProfile.addEventListener('click', ()=> 
   popupProfile.openPopup(),
-
- 
+  userProfile.setUserInfo(userProfile.getUserInfo())
 )
 /*validationPopupProfile.clearErrorFull()
 validationPopupProfile.enableButtonSubmit()*/
@@ -112,6 +117,6 @@ buttonsClosePopup.forEach(canselItem => {
 cardPrimery.renderItems();
 popupViewCard.setEventListeners();
 popupProfile.setEventListeners();
-popupCardNew.setEventListeners();
+/*popupCardNew.setEventListeners();*/
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
