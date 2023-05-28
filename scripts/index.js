@@ -50,6 +50,10 @@ function handleCardClick (link, title, name) {
   popupViewCard.openPopup(link, title, name);
 }
 
+function displayInfoProfile(item) {
+  nameInput.value = item.name;
+  jobInput.value = item.profession;
+}
 /*function openPopup(item) {
   item.classList.add('popup_opened');
   item.addEventListener('click', closePopupClick);
@@ -76,18 +80,21 @@ function closePopupClick (evt) {
   };
 }*/
 
-buttonOpenPopupProfile.addEventListener('click', ()=> 
+buttonOpenPopupProfile.addEventListener('click', ()=> {
+  displayInfoProfile(userProfile.getUserInfo()),
   popupProfile.openPopup(),
-  userProfile.setUserInfo(userProfile.getUserInfo())
-)
+  validationPopupProfile.clearErrorFull(),
+  validationPopupProfile.enableButtonSubmit()
+})
 /*validationPopupProfile.clearErrorFull()
 validationPopupProfile.enableButtonSubmit()*/
 
-buttonOpenPopupCardNew.addEventListener('click', ()=> 
+buttonOpenPopupCardNew.addEventListener('click', ()=> {
   popupCardNew.openPopup(),
   validationPopupCardNew.clearErrorFull(),
   validationPopupCardNew.disableButtonSubmit()
-)
+
+})
 /*
 formProfile.addEventListener('submit', function(evt) {
     evt.preventDefault();
@@ -116,7 +123,8 @@ buttonsClosePopup.forEach(canselItem => {
 
 cardPrimery.renderItems();
 popupViewCard.setEventListeners();
+/*popupCardNew.setEventListeners();
+*/
 popupProfile.setEventListeners();
-/*popupCardNew.setEventListeners();*/
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
