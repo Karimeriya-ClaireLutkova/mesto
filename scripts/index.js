@@ -17,13 +17,16 @@ const popupProfile = new PopupWithForm({
     userProfile.setUserInfo(formData);
   }
 });
-/*const popupCardNew = new PopupWithForm({selectorPopup:'.popup_type_card-new', handleFormSubmit:(formData) =>{
-  const name = nameCard.value;
-  const link = linkImageCard.value;
-  const title = nameCard.value;
-  const cardNew = new Section({items: [{name, link, title}], renderer: createCard}, '.elements');
-  cardNew.renderItems();
-  popupCardNew.closePopup();}});*/
+const popupCardNew = new PopupWithForm({
+  selectorPopup:'.popup_type_card-new', 
+  handleFormSubmit:(formData) => {
+    const name = formData.title;
+    const link = formData.link;
+    const title = formData.title;
+    const cardNew = new Section({items:[{name, link, title}], renderer: createCard}, '.elements');
+    cardNew.renderItems();
+  }
+});
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
 
 function createCard(item) {
@@ -33,6 +36,13 @@ function createCard(item) {
 }
 
 /*
+  const name = nameCard.value;
+  const link = linkImageCard.value;
+  const title = nameCard.value;
+  
+  popupCardNew.closePopup();
+
+
 function showCardNew(item) {
   sectionCardsPage.prepend(createCard(item));
 }
@@ -90,10 +100,9 @@ buttonOpenPopupProfile.addEventListener('click', ()=> {
 validationPopupProfile.enableButtonSubmit()*/
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> {
-  popupCardNew.openPopup(),
-  validationPopupCardNew.clearErrorFull(),
-  validationPopupCardNew.disableButtonSubmit()
-
+  popupCardNew.openPopup();
+  validationPopupCardNew.clearErrorFull();
+  validationPopupCardNew.disableButtonSubmit();  
 })
 /*
 formProfile.addEventListener('submit', function(evt) {
@@ -123,8 +132,7 @@ buttonsClosePopup.forEach(canselItem => {
 
 cardPrimery.renderItems();
 popupViewCard.setEventListeners();
-/*popupCardNew.setEventListeners();
-*/
+popupCardNew.setEventListeners();
 popupProfile.setEventListeners();
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
