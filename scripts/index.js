@@ -11,13 +11,13 @@ const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
 const userProfile = new UserInfo('.profile__name','.profile__profession');
 const popupProfile = new PopupWithForm({
-  selectorPopup:'.popup_type_profile-info', 
+  selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
     userProfile.setUserInfo(formData);
   }
 });
 const popupCardNew = new PopupWithForm({
-  selectorPopup:'.popup_type_card-new', 
+  selectorPopup:'.popup_type_card-new',
   handleFormSubmit:(formData) => {
     const name = formData.title;
     const link = formData.link;
@@ -44,16 +44,16 @@ function displayInfoProfile(item) {
 }
 
 buttonOpenPopupProfile.addEventListener('click', ()=> {
-  displayInfoProfile(userProfile.getUserInfo()),
-  popupProfile.openPopup(),
-  validationPopupProfile.clearErrorFull(),
-  validationPopupProfile.enableButtonSubmit()
+  displayInfoProfile(userProfile.getUserInfo());
+  popupProfile.openPopup();
+  validationPopupProfile.clearErrorFull();
+  validationPopupProfile.enableButtonSubmit();
 })
 
 buttonOpenPopupCardNew.addEventListener('click', ()=> {
   popupCardNew.openPopup();
   validationPopupCardNew.clearErrorFull();
-  validationPopupCardNew.disableButtonSubmit();  
+  validationPopupCardNew.disableButtonSubmit();
 })
 
 cardPrimery.renderItems();
