@@ -2,6 +2,7 @@ const imageKarachaevsk = new URL('../images/Карачаевск.jpg', import.me
 const imageElbrus = new URL('../images/Гора_Эльбрус.jpg', import.meta.url);
 const imageDombai = new URL('../images/Домбай.jpg', import.meta.url);
 
+
 export const initialCards = [
   {
     name: 'Карачаевск',
