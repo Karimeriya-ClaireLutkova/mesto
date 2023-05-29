@@ -1,4 +1,3 @@
-
 import Card from '../scripts/Cards.js';
 import Section from '../scripts/Section.js';
 import FormValidator from '../scripts/FormValidator.js';
@@ -11,7 +10,7 @@ import './index.css';
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
-const userProfile = new UserInfo('.profile__name','.profile__profession');
+const userProfile = new UserInfo('.profile__name', '.profile__profession');
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
