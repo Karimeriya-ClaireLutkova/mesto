@@ -1,37 +1,41 @@
+const imageKarachaevsk = new URL('../images/Карачаевск.jpg', import.meta.url);
+const imageElbrus = new URL('../images/Гора_Эльбрус.jpg', import.meta.url);
+const imageDombai = new URL('../images/Домбай.jpg', import.meta.url);
+
 export const initialCards = [
   {
     name: 'Карачаевск',
-    link: './images/Карачаевск.jpg',
+    link: imageKarachaevsk,
     title: 'Церковь в Карачаевске',
     isCardPrimery: true
   },
   {
     name: 'Гора Эльбрус',
-    link: './images/Гора_Эльбрус.jpg',
+    link: imageElbrus,
     title: 'Степи у Эльбруса',
     isCardPrimery: true
   },
   {
     name: 'Домбай',
-    link: './images/Домбай.jpg',
+    link: imageDombai,
     title: 'Лес на горной территории Домбая',
     isCardPrimery: true
   },
   {
     name: 'Гора Эльбрус',
-    link: './images/Гора_Эльбрус.jpg',
+    link: imageElbrus,
     title: 'Степи у Эльбруса',
     isCardPrimery: true
   },
   {
     name: 'Домбай',
-    link: './images/Домбай.jpg',
+    link: imageDombai,
     title: 'Лес на горной территории Домбая',
     isCardPrimery: true
   },
   {
     name: 'Карачаево-Черкесcия',
-    link: './images/Карачаевск.jpg',
+    link: imageKarachaevsk,
     title: 'Церковь в Карачаевске',
     isCardPrimery: true
   }
@@ -40,12 +44,12 @@ export const initialCards = [
 export const buttonOpenPopupProfile = document.querySelector('.profile__button_edit');
 export const buttonOpenPopupCardNew = document.querySelector('.profile__button_add');
 
-export const popupProfile = document.querySelector('.popup_type_profile-info');
+const popupProfile = document.querySelector('.popup_type_profile-info');
 export const formProfile = popupProfile.querySelector('.popup__form_type_profile');
 export const nameInput = formProfile.querySelector('.popup__input_type_name');
 export const jobInput = formProfile.querySelector('.popup__input_type_profession');
 
-export const popupCardNew = document.querySelector('.popup_type_card-new');
+const popupCardNew = document.querySelector('.popup_type_card-new');
 export const formCardNew = popupCardNew.querySelector('.popup__form_type_new-card');
 
 export const listValidation = ({

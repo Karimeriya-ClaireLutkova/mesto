@@ -1,10 +1,12 @@
-import Card from './Cards.js';
-import Section from './Section.js';
-import FormValidator from './FormValidator.js';
-import PopupWithForm from './PopupWithForm.js';
-import PopupWithImage from './PopupWithImage.js';
-import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, nameInput, jobInput, formCardNew} from './constants.js';
-import UserInfo from './UserInfo.js';
+
+import Card from '../scripts/Cards.js';
+import Section from '../scripts/Section.js';
+import FormValidator from '../scripts/FormValidator.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
+import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, nameInput, jobInput, formCardNew} from '../scripts/constants.js';
+import UserInfo from '../scripts/UserInfo.js';
+import './index.css';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
