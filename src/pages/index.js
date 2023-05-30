@@ -3,13 +3,13 @@ import Section from '../scripts/Section.js';
 import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
-import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, nameInput, jobInput, formCardNew} from '../scripts/constants.js';
+import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, formCardNew} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import './index.css';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
-const cardPrimery = new Section({renderer: createCard}, '.elements');
+const cardSection = new Section({items: initialCards, renderer: createCard}, '.elements');
 const userProfile = new UserInfo('.profile__name', '.profile__profession');
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
@@ -23,8 +23,8 @@ const popupCardNew = new PopupWithForm({
     const name = formData.title;
     const link = formData.link;
     const title = formData.title;
-    const cardNew = new Section({items:[{name, link, title}], renderer: createCard}, '.elements');
-    cardNew.renderItems();
+    const card = createCard({name, link, title});
+    cardSection.addItem(card)
   }
 });
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
@@ -52,7 +52,7 @@ buttonOpenPopupCardNew.addEventListener('click', ()=> {
   validationPopupCardNew.disableButtonSubmit();
 })
 
-cardPrimery.renderItems(initialCards.reverse());
+cardSection.renderItems(initialCards.reverse());
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
 popupProfile.setEventListeners();
