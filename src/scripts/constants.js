@@ -7,38 +7,32 @@ export const initialCards = [
   {
     name: 'Карачаевск',
     link: imageKarachaevsk,
-    title: 'Церковь в Карачаевске',
-    isCardPrimery: true
+    title: 'Церковь в Карачаевске'
   },
   {
     name: 'Гора Эльбрус',
     link: imageElbrus,
-    title: 'Степи у Эльбруса',
-    isCardPrimery: true
+    title: 'Степи у Эльбруса'
   },
   {
     name: 'Домбай',
     link: imageDombai,
-    title: 'Лес на горной территории Домбая',
-    isCardPrimery: true
+    title: 'Лес на горной территории Домбая'
   },
   {
     name: 'Гора Эльбрус',
     link: imageElbrus,
-    title: 'Степи у Эльбруса',
-    isCardPrimery: true
+    title: 'Степи у Эльбруса'
   },
   {
     name: 'Домбай',
     link: imageDombai,
-    title: 'Лес на горной территории Домбая',
-    isCardPrimery: true
+    title: 'Лес на горной территории Домбая'
   },
   {
     name: 'Карачаево-Черкесcия',
     link: imageKarachaevsk,
-    title: 'Церковь в Карачаевске',
-    isCardPrimery: true
+    title: 'Церковь в Карачаевске'
   }
 ];
 

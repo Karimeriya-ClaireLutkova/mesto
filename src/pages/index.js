@@ -9,7 +9,7 @@ import './index.css';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
-const cardPrimery = new Section({items: initialCards, renderer: createCard}, '.elements');
+const cardPrimery = new Section({renderer: createCard}, '.elements');
 const userProfile = new UserInfo('.profile__name', '.profile__profession');
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
@@ -39,13 +39,8 @@ function handleCardClick (link, title, name) {
   popupViewCard.openPopup(link, title, name);
 }
 
-function displayInfoProfile(item) {
-  nameInput.value = item.name;
-  jobInput.value = item.profession;
-}
-
 buttonOpenPopupProfile.addEventListener('click', ()=> {
-  displayInfoProfile(userProfile.getUserInfo());
+  popupProfile.setInputValues(userProfile.getUserInfo());
   popupProfile.openPopup();
   validationPopupProfile.clearErrorFull();
   validationPopupProfile.enableButtonSubmit();
@@ -57,7 +52,7 @@ buttonOpenPopupCardNew.addEventListener('click', ()=> {
   validationPopupCardNew.disableButtonSubmit();
 })
 
-cardPrimery.renderItems();
+cardPrimery.renderItems(initialCards.reverse());
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
 popupProfile.setEventListeners();
