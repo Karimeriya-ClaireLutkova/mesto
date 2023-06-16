@@ -3,6 +3,7 @@ import Section from '../scripts/Section.js';
 import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
+import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, formCardNew} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import './index.css';
@@ -28,15 +29,20 @@ const popupCardNew = new PopupWithForm({
   }
 });
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
+const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
 
 function createCard(item) {
-  const templateCard = new Card(item, '.card-template', handleCardClick);
+  const templateCard = new Card(item, '.card-template', handleCardClick, handleCardDelete);
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
 
-function handleCardClick (link, title, name) {
+function handleCardClick(link, title, name) {
   popupViewCard.openPopup(link, title, name);
+}
+
+function handleCardDelete() {
+  popupConfirmDelete.openPopup();
 }
 
 buttonOpenPopupProfile.addEventListener('click', ()=> {
@@ -56,5 +62,6 @@ cardSection.renderItems(initialCards.reverse());
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
 popupProfile.setEventListeners();
+popupConfirmDelete.setEventListeners();
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();

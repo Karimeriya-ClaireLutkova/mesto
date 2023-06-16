@@ -4,6 +4,7 @@ export default class Card {
     this._link = item.link;
     this._title = item.title;
     this._handleCardClick = handleCardClick;
+    this._handleCardDelete = handleCardDelete;
     this._templateSelector = templateSelector;
   }
 
@@ -36,9 +37,9 @@ export default class Card {
     this._buttonLikeCard.classList.toggle('element__button_like_active');
   }
 
-  _deleteCard() {
+  /*_deleteCard() {
     this._element.remove();
-  }
+  }*/
 
   _setEventListeners() {
     this._imageCard.addEventListener('click', () => {
@@ -48,7 +49,7 @@ export default class Card {
       this._likeCard();
     });
     this._buttonDeleteCard.addEventListener('click', () => {
-      this._deleteCard();
+      this._handleCardDelete();
     });
   }
 }
