@@ -6,6 +6,7 @@ import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
 import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
+import Api from '../scripts/Api.js';
 import './index.css';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
@@ -36,6 +37,13 @@ const popupAvatarNew = new PopupWithForm({
     imageProfile.link = formData.link;
   }
 });
+const api = new Api({
+  baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-68/',
+  headers: {
+    authorization: 'fcd98cd3-4216-4409-b17a-f7511209a4fb',
+    'Content-Type': 'application/json'
+  }
+}); 
 
 
 const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
@@ -73,6 +81,7 @@ buttonOpenPopupAvatarNew.addEventListener('click', ()=> {
   validationPopupAvatarNew.disableButtonSubmit();
 })
 
+api.getInitialCards();
 cardSection.renderItems(initialCards.reverse());
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
