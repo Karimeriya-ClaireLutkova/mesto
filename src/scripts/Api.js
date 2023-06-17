@@ -20,6 +20,21 @@ export default class Api {
     })
   }
 
+  editProfileInfo(item) {
+    return fetch(`${this._baseUrl}users/me`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: item.name,
+        about: item.about,
+      }),
+    })
+    .then((res) => this._this._checkResponseRequest(res))
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
 
   _checkResponseRequest(res) {
     if (res.ok) {

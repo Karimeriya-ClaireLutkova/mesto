@@ -4,7 +4,7 @@ import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
-import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
+import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, buttonSaveProfileInfo, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import Api from '../scripts/Api.js';
 import './index.css';
@@ -19,8 +19,17 @@ const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
     userProfile.setUserInfo(formData);
+    addLoadingInfo(buttonSaveProfileInfo);
+    api.editProfileInfo(formData).then((result) => {
+      userProfile.setUserInfo(result);
+      popupProfile.close();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        deleteLoadingInfo(buttonSaveProfileInfo)
+      })
   }
-});
+})
 const popupCardNew = new PopupWithForm({
   selectorPopup:'.popup_type_card-new',
   handleFormSubmit:(formData) => {
@@ -69,6 +78,13 @@ function handleCardConfirm() {
   popupConfirmDelete.openPopup();
 }
 
+function addLoadingInfo(item) {
+  item.textContent = 'Сохранение...';
+}
+
+function deleteLoadingInfo(item) {
+  item.textContent = "Сохранить";
+}
 buttonOpenPopupProfile.addEventListener('click', ()=> {
   popupProfile.setInputValues(userProfile.getUserInfo());
   popupProfile.openPopup();
