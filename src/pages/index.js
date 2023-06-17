@@ -4,12 +4,13 @@ import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
-import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, formProfile, formCardNew} from '../scripts/constants.js';
+import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import './index.css';
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
+const validationPopupAvatarNew = new FormValidator(listValidation, formAvatarNew);
 const cardSection = new Section({items: initialCards, renderer: createCard}, '.elements');
 const userProfile = new UserInfo('.profile__name', '.profile__profession');
 const popupProfile = new PopupWithForm({
@@ -29,6 +30,14 @@ const popupCardNew = new PopupWithForm({
   }
 });
 const popupViewCard = new PopupWithImage('.popup_type_image-view');
+const popupAvatarNew = new PopupWithForm({
+  selectorPopup:'.popup_type_profile-avatar',
+  handleFormSubmit:(formData) => {
+    imageProfile.link = formData.link;
+  }
+});
+
+
 const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
 
 function createCard(item) {
@@ -58,10 +67,18 @@ buttonOpenPopupCardNew.addEventListener('click', ()=> {
   validationPopupCardNew.disableButtonSubmit();
 })
 
+buttonOpenPopupAvatarNew.addEventListener('click', ()=> {
+  popupAvatarNew.openPopup();
+  validationPopupAvatarNew.clearErrorFull();
+  validationPopupAvatarNew.disableButtonSubmit();
+})
+
 cardSection.renderItems(initialCards.reverse());
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
 popupProfile.setEventListeners();
+popupAvatarNew.setEventListeners();
 popupConfirmDelete.setEventListeners();
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
+validationPopupAvatarNew.enableValidation();
