@@ -1,12 +1,15 @@
 export default class Api {
   constructor(options) {
-    this._baseUrl = options.serverUrl;
+    this._baseUrl = options.baseUrl;
     this._headers = options.headers;
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}cards`, this._headers)
-      .then((res) => this._checkResponseRequest(res));
+    return fetch(`${this._baseUrl}cards`, {headers: this._headers})
+      .then((res) => this._checkResponseRequest(res))
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   _checkResponseRequest(res) {

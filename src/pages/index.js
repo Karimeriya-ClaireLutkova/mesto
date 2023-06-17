@@ -4,15 +4,16 @@ import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
-import {listValidation, initialCards, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
+import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import Api from '../scripts/Api.js';
 import './index.css';
 
+
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const validationPopupAvatarNew = new FormValidator(listValidation, formAvatarNew);
-const cardSection = new Section({items: initialCards, renderer: createCard}, '.elements');
+const cardSection = new Section({renderer: createCard}, '.elements');
 const userProfile = new UserInfo('.profile__name', '.profile__profession');
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
@@ -43,10 +44,12 @@ const api = new Api({
     authorization: 'fcd98cd3-4216-4409-b17a-f7511209a4fb',
     'Content-Type': 'application/json'
   }
-}); 
-
+});
 
 const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
+api.getInitialCards().then((result) => {
+  cardSection.renderItems(result.reverse());
+});
 
 function createCard(item) {
   const templateCard = new Card(item, '.card-template', handleCardClick, handleCardConfirm);
@@ -81,8 +84,8 @@ buttonOpenPopupAvatarNew.addEventListener('click', ()=> {
   validationPopupAvatarNew.disableButtonSubmit();
 })
 
-api.getInitialCards();
-cardSection.renderItems(initialCards.reverse());
+
+
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
 popupProfile.setEventListeners();

@@ -2,40 +2,6 @@ const imageKarachaevsk = new URL('../images/Карачаевск.jpg', import.me
 const imageElbrus = new URL('../images/Гора_Эльбрус.jpg', import.meta.url);
 const imageDombai = new URL('../images/Домбай.jpg', import.meta.url);
 
-
-export const initialCards = [
-  {
-    name: 'Карачаевск',
-    link: imageKarachaevsk,
-    title: 'Церковь в Карачаевске'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: imageElbrus,
-    title: 'Степи у Эльбруса'
-  },
-  {
-    name: 'Домбай',
-    link: imageDombai,
-    title: 'Лес на горной территории Домбая'
-  },
-  {
-    name: 'Гора Эльбрус',
-    link: imageElbrus,
-    title: 'Степи у Эльбруса'
-  },
-  {
-    name: 'Домбай',
-    link: imageDombai,
-    title: 'Лес на горной территории Домбая'
-  },
-  {
-    name: 'Карачаево-Черкесcия',
-    link: imageKarachaevsk,
-    title: 'Церковь в Карачаевске'
-  }
-];
-
 export const buttonOpenPopupProfile = document.querySelector('.profile__button_edit');
 export const buttonOpenPopupCardNew = document.querySelector('.profile__button_add');
 export const buttonOpenPopupAvatarNew = document.querySelector('.profile__button_edit-photo');
