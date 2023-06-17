@@ -11,12 +11,12 @@
   margin: 0;
 }
 
-.popup__button_save:hover {
+.popup__button_accept:hover {
   opacity: 0.8;
 }
 
 @media (max-width: 800px) {
-  .popup__button_save {
+  .popup__button_accept {
     width: 238px;
     height: 46px;
     font-size: 14px;
