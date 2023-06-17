@@ -1,10 +1,10 @@
 export default class Card {
-  constructor(item, templateSelector, handleCardClick) {
+  constructor(item, templateSelector, handleCardClick, handleCardConfirm) {
     this._name = item.name;
     this._link = item.link;
     this._title = item.title;
     this._handleCardClick = handleCardClick;
-    this._handleCardDelete = handleCardDelete;
+    this._handleCardConfirm = handleCardConfirm;
     this._templateSelector = templateSelector;
   }
 
@@ -37,10 +37,6 @@ export default class Card {
     this._buttonLikeCard.classList.toggle('element__button_like_active');
   }
 
-  /*_deleteCard() {
-    this._element.remove();
-  }*/
-
   _setEventListeners() {
     this._imageCard.addEventListener('click', () => {
       this._handleCardClick(this._link, this._title, this._name);
@@ -49,7 +45,7 @@ export default class Card {
       this._likeCard();
     });
     this._buttonDeleteCard.addEventListener('click', () => {
-      this._handleCardDelete();
+      this._handleCardConfirm(this._element);
     });
   }
 }

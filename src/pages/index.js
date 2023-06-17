@@ -32,7 +32,7 @@ const popupViewCard = new PopupWithImage('.popup_type_image-view');
 const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
 
 function createCard(item) {
-  const templateCard = new Card(item, '.card-template', handleCardClick, handleCardDelete);
+  const templateCard = new Card(item, '.card-template', handleCardClick, handleCardConfirm);
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
@@ -41,7 +41,7 @@ function handleCardClick(link, title, name) {
   popupViewCard.openPopup(link, title, name);
 }
 
-function handleCardDelete() {
+function handleCardConfirm() {
   popupConfirmDelete.openPopup();
 }
 
