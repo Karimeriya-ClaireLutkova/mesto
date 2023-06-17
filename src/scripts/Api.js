@@ -12,6 +12,15 @@ export default class Api {
       })
   }
 
+  getUserInfo() {
+    return fetch(`${this._baseUrl}users/me`, {headers: this._headers})
+    .then((res) => this._checkResponseRequest(res))
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
+
   _checkResponseRequest(res) {
     if (res.ok) {
       return res.json();

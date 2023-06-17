@@ -14,7 +14,7 @@ const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
 const validationPopupAvatarNew = new FormValidator(listValidation, formAvatarNew);
 const cardSection = new Section({renderer: createCard}, '.elements');
-const userProfile = new UserInfo('.profile__name', '.profile__profession');
+const userProfile = new UserInfo('.profile__name', '.profile__profession', '.profile__avatar');
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
@@ -49,6 +49,10 @@ const api = new Api({
 const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
 api.getInitialCards().then((result) => {
   cardSection.renderItems(result.reverse());
+});
+
+api.getUserInfo().then((result) => {
+  userProfile.setUserInfo(result);
 });
 
 function createCard(item) {
