@@ -8,9 +8,11 @@ export const formProfile = popupProfile.querySelector('.popup__form_type_profile
 export const nameInput = formProfile.querySelector('.popup__input_type_name');
 export const jobInput = formProfile.querySelector('.popup__input_type_profession');
 export const buttonSaveProfileInfo = formProfile.querySelector('.popup__button_save');
+export const buttonSaveProfileAvatar = document.querySelector('.popup__form_type_new-avatar');
 
 const popupCardNew = document.querySelector('.popup_type_card-new');
 export const formCardNew = popupCardNew.querySelector('.popup__form_type_new-card');
+export const buttonAddCardNew = formCardNew.querySelector('.popup__button_add');
 
 const popupAvatar = document.querySelector('.popup_type_profile-avatar');
 export const formAvatarNew = popupAvatar.querySelector('.popup__form_type_new-avatar');

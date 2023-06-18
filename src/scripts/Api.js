@@ -64,6 +64,17 @@ export default class Api {
     })
   }
 
+  deleteCard(item) {
+    return fetch(`${this._baseUrl}cards/${item}`, {
+      method: "DELETE",
+      headers: this._headers,
+    })
+    .then((res) => this.this._checkResponseRequest(res))
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   _checkResponseRequest(res) {
     if (res.ok) {
       return res.json();
