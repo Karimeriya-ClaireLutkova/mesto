@@ -103,7 +103,8 @@ function handleCardClick(link, title, name) {
   popupViewCard.openPopup(link, title, name);
 }
 
-function handleCardConfirm() {
+function handleCardConfirm(item) {
+  popupConfirmDelete.getCard(item);
   popupConfirmDelete.openPopup();
 }
 

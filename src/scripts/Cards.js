@@ -43,7 +43,7 @@ export default class Card {
     if (this._cardOwner === this._userId) {
       this._buttonDeleteCard.classList.add('element__button_delete_active'); 
       this._buttonDeleteCard.addEventListener('click', () => {
-        this._handleCardConfirm();
+        this._deleteCard()
       });
     }
 
@@ -53,7 +53,14 @@ export default class Card {
 
     this._buttonLikeCard.addEventListener('click', () => {
       this._likeCard();
-    }); 
-   
+    });
+  }
+  _deleteCard() {
+    const item = {
+      card: this._element,
+      cardId: this._cardId,
+    };
+      
+    this._handleCardConfirm(item);
   }
 }
