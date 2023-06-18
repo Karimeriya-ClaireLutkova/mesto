@@ -81,7 +81,7 @@ const popupConfirmDelete = new PopupWithConfirmation({
   },
 });
 
-const userInfoId = [];
+const userInfoId = {};
 
 api.getInitialCards().then((result) => {
   cardSection.renderItems(result.reverse());
