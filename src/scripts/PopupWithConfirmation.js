@@ -8,7 +8,6 @@ export default class PopupWithConfirmation extends Popup {
 
   deleteCardInfo(item) {
     this._item = item;
-    return this._item
   }
 
   setEventListeners() {
