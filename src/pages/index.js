@@ -22,7 +22,7 @@ const popupProfile = new PopupWithForm({
     addLoadingInfo(buttonSaveProfileInfo);
     api.editProfileInfo(formData).then((result) => {
       userProfile.setUserInfo(result);
-      popupProfile.close();
+      popupProfile.closePopup();
       })
       .catch((err) => console.log(err))
       .finally(() => {
@@ -44,9 +44,18 @@ const popupViewCard = new PopupWithImage('.popup_type_image-view');
 const popupAvatarNew = new PopupWithForm({
   selectorPopup:'.popup_type_profile-avatar',
   handleFormSubmit:(formData) => {
-    imageProfile.link = formData.link;
+    addLoadingInfo(buttonSaveProfileInfo);
+    api.editProfileAvatar(formData).then((result) => {
+      userProfile.setUserAvatar(result);
+      popupAvatarNew.closePopup();
+    })
+    .catch((err) => console.log(err))
+    .finally(() => {
+      deleteLoadingInfo(buttonSaveProfileInfo)
+    })
   }
 });
+
 const api = new Api({
   baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-68/',
   headers: {
@@ -62,6 +71,7 @@ api.getInitialCards().then((result) => {
 
 api.getUserInfo().then((result) => {
   userProfile.setUserInfo(result);
+  userProfile.setUserAvatar(result);
 });
 
 function createCard(item) {
@@ -85,6 +95,7 @@ function addLoadingInfo(item) {
 function deleteLoadingInfo(item) {
   item.textContent = "Сохранить";
 }
+
 buttonOpenPopupProfile.addEventListener('click', ()=> {
   popupProfile.setInputValues(userProfile.getUserInfo());
   popupProfile.openPopup();

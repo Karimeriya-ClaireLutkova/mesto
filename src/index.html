@@ -13,11 +13,11 @@
     <section class="profile">
       <div class="profile__avatar-edit">
         <button type="button" class="profile__button profile__button_edit-photo"  aria-label="Изменить аватар"></button>
-        <img class="profile__avatar" src="<%=require('./images/kusto_avatar.jpg')%>" alt="Фотография пользователя">
+        <img class="profile__avatar" src="" alt="Фотография пользователя">
       </div>      
       <div class="profile__info">
-        <h1 class="profile__name">Жак-Ив Кусто</h1>
-        <p class="profile__profession">Исследователь океана</p>
+        <h1 class="profile__name"></h1>
+        <p class="profile__profession"></p>
         <button type="button" class="profile__button profile__button_edit" aria-label="Редактировать профиль"></button>
       </div>
       <button type="button" class="profile__button profile__button_add" aria-label="Добавить карточку места"></button>
@@ -36,7 +36,7 @@
       <form class="popup__form popup__form_type_new-avatar" novalidate>
         <div class="popup__form-info">
           <div class="popup__field">
-            <input id="avatar-link" type="url" class="popup__input popup__input_type_link" name="link" placeholder="Ссылка на картинку" value="https://somewebsite.com/someimage.jpg" required>
+            <input id="avatar-link" type="url" class="popup__input popup__input_type_link" name="avatar" placeholder="Ссылка на картинку" value="" required>
             <span class="avatar-link-error popup__input-error"></span>
           </div>
           <button type="submit" class="popup__button popup__button_save">Сохранить</button>

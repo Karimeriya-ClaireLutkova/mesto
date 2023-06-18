@@ -29,12 +29,25 @@ export default class Api {
         about: item.about,
       }),
     })
-    .then((res) => this._this._checkResponseRequest(res))
+    .then((res) => this._checkResponseRequest(res))
     .catch((err) => {
       console.log(err);
     })
   }
 
+  editProfileAvatar(item) {
+    return fetch(`${this._baseUrl}users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: item.avatar,
+      }),
+    })
+    .then((res) => this._checkResponseRequest(res))
+    .catch((err) => {
+      console.log(err);
+    })
+  }
 
   _checkResponseRequest(res) {
     if (res.ok) {
