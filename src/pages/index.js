@@ -17,7 +17,6 @@ const userProfile = new UserInfo('.profile__name', '.profile__profession', '.pro
 const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
-    userProfile.setUserInfo(formData);
     addLoadingInfo(buttonSaveProfileInfo, 'Сохранение...');
     api.editProfileInfo(formData).then((result) => {
       userProfile.setUserInfo(result);
