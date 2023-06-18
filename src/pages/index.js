@@ -82,6 +82,7 @@ const popupConfirmDelete = new PopupWithConfirmation({
 });
 
 const userInfoId = {};
+let cardsInfo = {};
 
 api.getInitialCards().then((result) => {
   cardSection.renderItems(result.reverse());
@@ -94,18 +95,22 @@ api.getUserInfo().then((result) => {
 });
 
 function createCard(item) {
-  const templateCard = new Card({item, userInfoId, addCardLike: (data) => {
-    return api.addLike(data);
-  },
-  deleteCardLike: (data) => {
-    return api.deleteLike(data);
-  }, templateSelector:'.card-template', handleCardClick, handleCardConfirm});
+  const templateCard = new Card(item, userInfoId, handleCardLike, '.card-template', handleCardClick, handleCardConfirm);
+  cardsInfo[item._id] = templateCard;
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
 
 function handleCardClick(link, title, name) {
   popupViewCard.openPopup(link, title, name);
+}
+
+function handleCardLike(cardId, isLikedInfo) {
+  api.changeLike(cardId, isLikedInfo)
+    .then(result => {
+      cardsInfo[cardId].checkLikeCard(result);
+    })
+    .catch((err) => console.error(err))  
 }
 
 function handleCardConfirm(item) {

@@ -73,6 +73,14 @@ export default class Api {
     .then((res) => this._checkResponseRequest(res))
   }
 
+  changeLike(cardId, isLikedInfo) {
+    if (isLikedInfo) {
+      return this.deleteLike(cardId);
+    } else {
+      return this.addLike(cardId);
+    }
+  }
+
   _checkResponseRequest(res) {
     if (res.ok) {
       return res.json();
