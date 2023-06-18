@@ -18,7 +18,7 @@ const popupProfile = new PopupWithForm({
   selectorPopup:'.popup_type_profile-info',
   handleFormSubmit:(formData) => {
     userProfile.setUserInfo(formData);
-    addLoadingInfo(buttonSaveProfileInfo);
+    addLoadingInfo(buttonSaveProfileInfo, 'Сохранение...');
     api.editProfileInfo(formData).then((result) => {
       userProfile.setUserInfo(result);
       popupProfile.closePopup();
@@ -34,7 +34,7 @@ const popupCardNew = new PopupWithForm({
   selectorPopup:'.popup_type_card-new',
   handleFormSubmit:(formData) => {    
     const item = {name: formData.title, link: formData.link};
-    addLoadingInfo(buttonAddCardNew);
+    addLoadingInfo(buttonAddCardNew, 'Сохранение...');
     api.addCardNew(item)
       .then((result) => {
         cardSection.addItem(createCard(result));
@@ -50,7 +50,7 @@ const popupViewCard = new PopupWithImage('.popup_type_image-view');
 const popupAvatarNew = new PopupWithForm({
   selectorPopup:'.popup_type_profile-avatar',
   handleFormSubmit:(formData) => {
-    addLoadingInfo(buttonSaveProfileAvatar);
+    addLoadingInfo(buttonSaveProfileAvatar, 'Сохранение...');
     api.editProfileAvatar(formData).then((result) => {
       userProfile.setUserAvatar(result);
       popupAvatarNew.closePopup();
@@ -77,7 +77,7 @@ const popupConfirmDelete = new PopupWithConfirmation({
       formData.card.remove();
       popupConfirmDelete.closePopup();
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
   },
 });
 
@@ -104,12 +104,12 @@ function handleCardClick(link, title, name) {
 }
 
 function handleCardConfirm(item) {
-  popupConfirmDelete.getCard(item);
-  popupConfirmDelete.openPopup();
+  popupConfirmDelete.deleteCardInfo(item);
+  popupConfirmDelete.openPopup(item);
 }
 
-function addLoadingInfo(item) {
-  item.textContent = 'Сохранение...';
+function addLoadingInfo(item, text) {
+  item.textContent = text;
 }
 
 function deleteLoadingInfo(item, text) {
