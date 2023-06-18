@@ -4,11 +4,10 @@ import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
-import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, buttonSaveProfileInfo, buttonSaveProfileAvatar, buttonAddCardNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
+import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, buttonSaveProfileInfo, buttonSaveProfileAvatar, buttonAddCardNew, formProfile, formAvatarNew, formCardNew} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import Api from '../scripts/Api.js';
 import './index.css';
-
 
 const validationPopupProfile = new FormValidator(listValidation, formProfile);
 const validationPopupCardNew = new FormValidator(listValidation, formCardNew);
@@ -26,10 +25,11 @@ const popupProfile = new PopupWithForm({
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        deleteLoadingInfo(buttonSaveProfileInfo)
+        deleteLoadingInfo(buttonSaveProfileInfo, 'Сохранить')
       })
   }
 })
+
 const popupCardNew = new PopupWithForm({
   selectorPopup:'.popup_type_card-new',
   handleFormSubmit:(formData) => {    
@@ -42,7 +42,7 @@ const popupCardNew = new PopupWithForm({
       })
       .catch((err) => console.log(err))
       .finally(() => {
-        deleteLoadingInfo(buttonAddCardNew)
+        deleteLoadingInfo(buttonAddCardNew, 'Создать')
       })
   }
 });
@@ -57,7 +57,7 @@ const popupAvatarNew = new PopupWithForm({
     })
     .catch((err) => console.log(err))
     .finally(() => {
-      deleteLoadingInfo(buttonSaveProfileAvatar)
+      deleteLoadingInfo(buttonSaveProfileAvatar, 'Сохранить')
     })
   }
 });
@@ -70,18 +70,31 @@ const api = new Api({
   }
 });
 
-const popupConfirmDelete = new PopupWithConfirmation('.popup_type_confirm-deletion');
+const popupConfirmDelete = new PopupWithConfirmation({
+  selectorPopup: '.popup_type_confirm-deletion',
+  handleFormSubmit:(formData) => {
+    api.deleteCard(formData.cardId).then(() => {
+      formData.card.remove();
+      popupConfirmDelete.closePopup();
+      })
+      .catch((err) => console.log(err));
+  },
+});
+
+const userInfoId = [];
+
 api.getInitialCards().then((result) => {
   cardSection.renderItems(result.reverse());
 });
 
 api.getUserInfo().then((result) => {
+  userInfoId._id = result._id;
   userProfile.setUserInfo(result);
   userProfile.setUserAvatar(result);
 });
 
 function createCard(item) {
-  const templateCard = new Card(item, '.card-template', handleCardClick, handleCardConfirm);
+  const templateCard = new Card(item, userInfoId, '.card-template', handleCardClick, handleCardConfirm);
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
@@ -94,15 +107,12 @@ function handleCardConfirm() {
   popupConfirmDelete.openPopup();
 }
 
-function deleteCard(item, elemId) {
-  const card = {}
-}
 function addLoadingInfo(item) {
   item.textContent = 'Сохранение...';
 }
 
-function deleteLoadingInfo(item) {
-  item.textContent = "Сохранить";
+function deleteLoadingInfo(item, text) {
+  item.textContent = text;
 }
 
 buttonOpenPopupProfile.addEventListener('click', ()=> {

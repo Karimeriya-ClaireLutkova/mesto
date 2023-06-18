@@ -1,7 +1,7 @@
 export const buttonOpenPopupProfile = document.querySelector('.profile__button_edit');
 export const buttonOpenPopupCardNew = document.querySelector('.profile__button_add');
 export const buttonOpenPopupAvatarNew = document.querySelector('.profile__button_edit-photo');
-export const imageProfile = document.querySelector('.profile__avatar');
+const imageProfile = document.querySelector('.profile__avatar');
 
 const popupProfile = document.querySelector('.popup_type_profile-info');
 export const formProfile = popupProfile.querySelector('.popup__form_type_profile');
