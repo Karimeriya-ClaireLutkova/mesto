@@ -74,7 +74,7 @@ const popupConfirmDelete = new PopupWithConfirmation({
   selectorPopup: '.popup_type_confirm-deletion',
   handleFormSubmit:(formData) => {
     api.deleteCard(formData.cardId).then(() => {
-      formData.card.remove();
+      cardsInfo[formData.cardId].deleteCard();
       popupConfirmDelete.closePopup();
       })
       .catch((err) => console.log(err))
@@ -83,16 +83,6 @@ const popupConfirmDelete = new PopupWithConfirmation({
 
 const userInfoId = {};
 let cardsInfo = {};
-
-api.getInitialCards().then((result) => {
-  cardSection.renderItems(result.reverse());
-});
-
-api.getUserInfo().then((result) => {
-  userInfoId._id = result._id;
-  userProfile.setUserInfo(result);
-  userProfile.setUserAvatar(result);
-});
 
 function createCard(item) {
   const templateCard = new Card(item, userInfoId, handleCardLike, '.card-template', handleCardClick, handleCardConfirm);
@@ -153,3 +143,12 @@ popupConfirmDelete.setEventListeners();
 validationPopupProfile.enableValidation();
 validationPopupCardNew.enableValidation();
 validationPopupAvatarNew.enableValidation();
+
+Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userInfoId._id = userData._id;
+    userProfile.setUserInfo(userData);
+    userProfile.setUserAvatar(userData);
+    cardSection.renderItems(cards.reverse());
+  })
+  .catch((err) => console.log(err));
