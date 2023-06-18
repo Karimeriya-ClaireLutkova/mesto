@@ -69,7 +69,7 @@ export default class Api {
       method: "DELETE",
       headers: this._headers,
     })
-    .then((res) => this.this._checkResponseRequest(res))
+    .then((res) => this._checkResponseRequest(res))
     .catch((err) => {
       console.log(err);
     })
@@ -82,8 +82,4 @@ export default class Api {
       return Promise.reject(`Ошибка: ${res.status}`);
     }
   }
-
-
-
-  // другие методы работы с API
 }
