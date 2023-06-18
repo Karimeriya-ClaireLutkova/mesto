@@ -7,17 +7,11 @@ export default class Api {
   getInitialCards() {
     return fetch(`${this._baseUrl}cards`, {headers: this._headers})
       .then((res) => this._checkResponseRequest(res))
-      .catch((err) => {
-        console.log(err);
-      })
   }
 
   getUserInfo() {
     return fetch(`${this._baseUrl}users/me`, {headers: this._headers})
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   editProfileInfo(item) {
@@ -30,9 +24,6 @@ export default class Api {
       }),
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   editProfileAvatar(item) {
@@ -44,9 +35,6 @@ export default class Api {
       }),
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   addCardNew(item) {
@@ -59,9 +47,6 @@ export default class Api {
       }),
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   addLike(item) {
@@ -70,9 +55,6 @@ export default class Api {
       headers: this._headers,
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   deleteLike(item) {
@@ -81,9 +63,6 @@ export default class Api {
       headers: this._headers,
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   deleteCard(item) {
@@ -92,9 +71,6 @@ export default class Api {
       headers: this._headers,
     })
     .then((res) => this._checkResponseRequest(res))
-    .catch((err) => {
-      console.log(err);
-    })
   }
 
   _checkResponseRequest(res) {
