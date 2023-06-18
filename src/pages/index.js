@@ -4,7 +4,7 @@ import FormValidator from '../scripts/FormValidator.js';
 import PopupWithForm from '../scripts/PopupWithForm.js';
 import PopupWithImage from '../scripts/PopupWithImage.js';
 import PopupWithConfirmation from '../scripts/PopupWithConfirmation.js';
-import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, buttonSaveProfileInfo, buttonAddCardNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
+import {listValidation, buttonOpenPopupProfile, buttonOpenPopupCardNew, buttonOpenPopupAvatarNew, buttonSaveProfileInfo, buttonSaveProfileAvatar, buttonAddCardNew, formProfile, formAvatarNew, formCardNew, imageProfile} from '../scripts/constants.js';
 import UserInfo from '../scripts/UserInfo.js';
 import Api from '../scripts/Api.js';
 import './index.css';
