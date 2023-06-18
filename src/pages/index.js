@@ -32,7 +32,7 @@ const popupProfile = new PopupWithForm({
 
 const popupCardNew = new PopupWithForm({
   selectorPopup:'.popup_type_card-new',
-  handleFormSubmit:(formData) => {    
+  handleFormSubmit:(formData) => {
     const item = {name: formData.title, link: formData.link};
     addLoadingInfo(buttonAddCardNew, 'Сохранение...');
     api.addCardNew(item)
@@ -94,7 +94,12 @@ api.getUserInfo().then((result) => {
 });
 
 function createCard(item) {
-  const templateCard = new Card(item, userInfoId, '.card-template', handleCardClick, handleCardConfirm);
+  const templateCard = new Card({item, userInfoId, addCardLike: (data) => {
+    return api.addLike(data);
+  },
+  deleteCardLike: (data) => {
+    return api.deleteLike(data);
+  }, templateSelector:'.card-template', handleCardClick, handleCardConfirm});
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
@@ -134,8 +139,6 @@ buttonOpenPopupAvatarNew.addEventListener('click', ()=> {
   validationPopupAvatarNew.clearErrorFull();
   validationPopupAvatarNew.disableButtonSubmit();
 })
-
-
 
 popupViewCard.setEventListeners();
 popupCardNew.setEventListeners();
