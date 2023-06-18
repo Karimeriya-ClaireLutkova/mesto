@@ -33,11 +33,17 @@ const popupProfile = new PopupWithForm({
 const popupCardNew = new PopupWithForm({
   selectorPopup:'.popup_type_card-new',
   handleFormSubmit:(formData) => {
-    const name = formData.title;
-    const link = formData.link;
-    const title = formData.title;
-    const card = createCard({name, link, title});
-    cardSection.addItem(card)
+    addLoadingInfo(buttonSaveProfileInfo);
+    const item = {name: formData.title, link: formData.link};
+    api.addCardNew(item)
+      .then((result) => {
+        cardSection.addItem(createCard(result));
+        popupCardNew.closePopup();
+      })
+      .catch((err) => console.log(err))
+      .finally(() => {
+        deleteLoadingInfo(buttonSaveProfileInfo)
+      })
   }
 });
 const popupViewCard = new PopupWithImage('.popup_type_image-view');

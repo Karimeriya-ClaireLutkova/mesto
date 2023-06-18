@@ -49,6 +49,21 @@ export default class Api {
     })
   }
 
+  addCardNew(item) {
+    return fetch(`${this._baseUrl}cards`, {
+      method: "POST",
+      headers: this._headers,
+      body: JSON.stringify({
+        name: item.name,
+        link: item.link,
+      }),
+    })
+    .then((res) => this._checkResponseRequest(res))
+    .catch((err) => {
+      console.log(err);
+    })
+  }
+
   _checkResponseRequest(res) {
     if (res.ok) {
       return res.json();
