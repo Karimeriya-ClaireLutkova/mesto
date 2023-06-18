@@ -31,8 +31,9 @@ export default class Card {
     this._imageCard = this._element.querySelector('.element__image');
     this._titleCard = this._element.querySelector('.element__title');
     this._counterLike = this._element.querySelector('.element__counter-like');
-    
+   
     this._setEventListeners();
+    this._updateLikesView();
     this._titleCard.textContent = this._name;
     this._imageCard.src = this._link;
     this._imageCard.alt = this._title;
@@ -56,9 +57,11 @@ export default class Card {
   }
 
   _updateLikesView(item) {
-    this._likes = item;
-    this._isLikedInfo = this._isLiked();
-    this._counterLike.textContent = item.length;
+    if (item) {
+      this._likes = item;
+      this._isLikedInfo = this._isLiked();
+      this._counterLike.textContent = item.length;
+    }
     this._buttonLikeCard.classList.toggle('element__button_like_active', this._isLikedInfo);
   }
 
