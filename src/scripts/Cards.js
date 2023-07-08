@@ -53,7 +53,7 @@ export default class Card {
   }
 
   _likeCard() {
-    this._handleCardLike(this._cardId, this._isLikedInfo);
+    this._handleCardLike(this._cardId, this._isLikedInfo, this);
   }
 
   _updateLikesView(item) {
@@ -81,12 +81,7 @@ export default class Card {
   }
 
   _initialDeleteCard() {
-    const item = {
-      card: this._element,
-      cardId: this._cardId,
-    };
-
-    this._handleCardConfirm(item);
+    this._handleCardConfirm(this, this._cardId);
   }
 
   deleteCard() {

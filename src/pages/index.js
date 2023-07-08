@@ -71,9 +71,9 @@ const api = new Api({
 
 const popupConfirmDelete = new PopupWithConfirmation({
   selectorPopup: '.popup_type_confirm-deletion',
-  handleFormSubmit:(formData) => {
-    api.deleteCard(formData.cardId).then(() => {
-      cardsInfo[formData.cardId].deleteCard();
+  handleFormSubmit:(card, cardId) => {
+    api.deleteCard(cardId).then(() => {
+      card.deleteCard();
       popupConfirmDelete.closePopup();
       })
       .catch((err) => console.log(err))
@@ -81,11 +81,9 @@ const popupConfirmDelete = new PopupWithConfirmation({
 });
 
 const userInfoId = {};
-let cardsInfo = {};
 
 function createCard(item) {
   const templateCard = new Card(item, userInfoId, handleCardLike, '.card-template', handleCardClick, handleCardConfirm);
-  cardsInfo[item._id] = templateCard;
   const cardElement = templateCard.generateCard();
   return cardElement;
 }
@@ -94,17 +92,17 @@ function handleCardClick(link, title, name) {
   popupViewCard.openPopup(link, title, name);
 }
 
-function handleCardLike(cardId, isLikedInfo) {
+function handleCardLike(cardId, isLikedInfo, card) {
   api.changeLike(cardId, isLikedInfo)
     .then(result => {
-      cardsInfo[cardId].checkLikeCard(result);
+      card.checkLikeCard(result);
     })
     .catch((err) => console.error(err))  
 }
 
-function handleCardConfirm(item) {
-  popupConfirmDelete.deleteCardInfo(item);
-  popupConfirmDelete.openPopup(item);
+function handleCardConfirm(card, cardId) {
+  popupConfirmDelete.deleteCardInfo(card, cardId);
+  popupConfirmDelete.openPopup();
 }
 
 function addLoadingInfo(item, text) {
